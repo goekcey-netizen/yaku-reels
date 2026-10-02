@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, height=1920">
+<title>YAKÜ Gutachten – Was macht ein Kfz-Gutachter?</title>
+<script src="assets/gsap.min.js"></script>
+<style>
+@font-face{font-family:"Fraunces";src:url(assets/fonts/fraunces-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Fraunces";src:url(assets/fonts/fraunces-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"Fraunces";src:url(assets/fonts/fraunces-latin-800-normal.woff2) format("woff2");font-weight:800}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-400-normal.woff2) format("woff2");font-weight:400}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-500-normal.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-800-normal.woff2) format("woff2");font-weight:800}
+@font-face{font-family:"JetBrains Mono";src:url(assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"JetBrains Mono";src:url(assets/fonts/jetbrains-mono-latin-700-normal.woff2) format("woff2");font-weight:700}
+:root{--navy:#07306E;--logo:#07214D;--deep:#0A1B38;--ink:#14171F;--gold:#D8A42C;--gold2:#E9C46A;--paper:#F4F1EA;--muted:#5D6B80}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper)}
+body{font-family:"Inter",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+#root{position:relative;width:100%;height:100%;overflow:hidden;background:var(--paper)}
+.layer{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#bgDark{background:radial-gradient(120% 80% at 50% 40%,#123062 0%,#0A1B38 60%,#071328 100%);opacity:0}
+#grid{opacity:0;background-image:linear-gradient(rgba(143,182,234,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(143,182,234,.10) 1px,transparent 1px);background-size:54px 54px}
+svg{overflow:visible}
+/* headlines */
+#hl{pointer-events:none;color:var(--navy)}
+.hd{position:absolute;left:84px;top:262px;width:912px}
+.chip{display:inline-flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:28px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+.chip .num{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:29px;background:var(--gold);color:var(--deep);font-size:30px;letter-spacing:0}
+.ttl{font-family:"Fraunces",serif;font-weight:700;font-size:88px;line-height:1.02;letter-spacing:-.01em;margin-top:18px}
+.ln{display:block;overflow:hidden;padding-bottom:10px}
+.w{display:inline-block}
+#hd0 .ttl{font-size:150px;font-weight:800;letter-spacing:-.02em;margin-top:0;text-align:center}
+#hd0{top:300px;left:60px;width:960px;text-align:center}
+.uline{display:block;height:14px;width:520px;margin:0 auto;border-radius:7px;background:var(--gold)}
+/* captions */
+#cap{pointer-events:none}
+.cp{position:absolute;left:96px;top:1352px;width:848px;display:flex;justify-content:center}
+.cpi{display:inline-block;background:#FFFFFF;color:var(--ink);font-family:"Inter",sans-serif;font-weight:700;font-size:48px;line-height:1.2;padding:18px 30px 20px;border-radius:26px;box-shadow:0 14px 40px rgba(10,27,56,.16);text-align:center;max-width:848px}
+.hl{position:relative;display:inline-block;color:var(--navy);isolation:isolate}
+.mk{position:absolute;display:block;left:-6px;right:-6px;bottom:4px;height:22px;background:var(--gold2);border-radius:6px;z-index:-1}
+.cpi .t{position:relative;z-index:1}
+/* ui cards */
+#ui{pointer-events:none}
+.card{position:absolute;background:#fff;border-radius:22px;box-shadow:0 16px 40px rgba(10,27,56,.14);overflow:hidden}
+.dc{display:flex;align-items:center;gap:20px;padding:0 24px}
+.dc .ic{flex:none;width:60px;height:60px;border-radius:30px;background:#E9EEF6;display:flex;align-items:center;justify-content:center}
+.dc .lb{font-size:24px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.dc .vl{font-size:36px;font-weight:800;color:var(--navy);line-height:1.15;white-space:nowrap}
+.dc .ct{opacity:0}
+.mono{font-family:"JetBrains Mono",monospace}
+.pin{position:absolute;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:29px;background:var(--gold);color:var(--deep);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(216,164,44,.28),0 8px 18px rgba(10,27,56,.25)}
+.tag{position:absolute;background:var(--deep);color:#fff;font-family:"Inter",sans-serif;font-weight:700;font-size:32px;padding:10px 20px;border-radius:14px;white-space:nowrap;box-shadow:0 8px 20px rgba(10,27,56,.25)}
+.mtag{position:absolute;background:#fff;color:var(--deep);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:28px;padding:8px 14px;border-radius:10px;white-space:nowrap;border:2px solid var(--gold)}
+.pol{position:absolute;left:0;top:0;width:236px;height:262px;background:#fff;border-radius:10px;padding:12px 12px 0;box-shadow:0 14px 34px rgba(10,27,56,.25)}
+.pol .ph{width:212px;height:196px;border-radius:4px;overflow:hidden;background:#DDE6F2}
+.pol .cap{font-family:"JetBrains Mono",monospace;font-size:20px;font-weight:700;color:var(--muted);padding-top:12px;letter-spacing:.06em}
+.note{position:absolute;font-family:"JetBrains Mono",monospace;font-size:22px;font-weight:500;color:#4F5C70;letter-spacing:.04em}
+/* calc */
+.calc{position:absolute;left:90px;top:888px;width:900px;height:432px;border-radius:26px;background:rgba(14,36,74,.92);border:2px solid rgba(233,196,106,.35);box-shadow:0 30px 70px rgba(0,0,0,.35);overflow:hidden}
+.calc .hdr{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;border-bottom:1px solid rgba(143,182,234,.22);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:24px;letter-spacing:.16em;color:var(--gold2)}
+.row{position:absolute;left:30px;width:840px;height:56px;display:flex;align-items:center;gap:18px;color:#EAF1FB;font-weight:600;font-size:32px}
+.row .ri{width:44px;height:44px;border-radius:12px;background:rgba(143,182,234,.16);display:flex;align-items:center;justify-content:center;flex:none}
+.row .rl{width:300px;flex:none}
+.row .bar{position:relative;flex:1;height:14px;border-radius:7px;background:rgba(143,182,234,.14);overflow:hidden}
+.row .bf{position:absolute;left:0;top:0;height:14px;width:100%;border-radius:7px;display:block}
+.row .ok{width:36px;height:36px;border-radius:18px;background:#2FA36B;color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;flex:none}
+.sum{position:absolute;left:30px;top:336px;width:840px;height:76px;border-radius:18px;background:rgba(233,196,106,.12);border:2px solid rgba(233,196,106,.5);display:flex;align-items:center;padding:0 22px;gap:18px}
+.sum .sl{font-family:"Fraunces",serif;font-weight:700;font-size:38px;color:var(--gold2);width:330px;flex:none}
+.stack{position:relative;flex:1;height:26px;border-radius:13px;overflow:hidden;background:rgba(143,182,234,.12);display:block}
+.seg{position:absolute;top:0;height:26px;display:block}
+.xchip{position:absolute;left:560px;width:420px;height:58px;border-radius:29px;border:2px dashed rgba(233,196,106,.85);color:#F4F1EA;font-weight:700;font-size:28px;display:flex;align-items:center;gap:14px;padding:0 22px;background:rgba(10,27,56,.6)}
+.xchip i{display:block;width:14px;height:14px;border-radius:7px;background:var(--gold2);flex:none}
+/* document */
+#docWrap{position:absolute;left:270px;top:590px;width:540px;height:764px;perspective:2200px}
+.page{position:absolute;left:0;top:0;width:540px;height:764px;background:#fff;border-radius:14px;box-shadow:0 26px 60px rgba(10,27,56,.25);overflow:hidden;backface-visibility:hidden}
+.page .ph1{height:120px;background:var(--deep);color:#fff;padding:26px 30px;font-family:"JetBrains Mono",monospace;font-size:20px;letter-spacing:.14em;color:var(--gold2)}
+.page h4{margin:0;font-family:"Fraunces",serif;font-weight:700;font-size:34px;color:var(--navy);padding:26px 30px 8px}
+.ln2{height:12px;border-radius:6px;background:#E3E8F0;margin:14px 30px}
+.tbl{margin:14px 30px;display:grid;grid-template-columns:1fr 1.2fr;gap:12px 16px;font-size:22px}
+.tbl b{color:var(--muted);font-weight:600}
+.tbl span{color:var(--navy);font-weight:800}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 30px}
+.pgrid div{height:170px;border-radius:8px;overflow:hidden;background:#DDE6F2;position:relative}
+.pchip{position:absolute;left:770px;top:600px;height:52px;padding:0 22px;border-radius:26px;background:var(--gold);color:var(--deep);font-weight:800;font-size:26px;display:flex;align-items:center;white-space:nowrap}
+.tok{position:absolute;border-radius:16px;background:#fff;box-shadow:0 16px 36px rgba(0,0,0,.3);overflow:hidden}
+/* endcard */
+#end{position:absolute;left:0;top:0;width:1080px;height:1920px;opacity:0}
+#endPanel{position:absolute;left:0;top:0;background:var(--paper)}
+#logoWrap{position:absolute;left:150px;top:470px;width:780px;height:515px}
+#logoWrap img{width:780px;height:515px;display:block}
+.eln{position:absolute;left:60px;width:960px;text-align:center;font-family:"Fraunces",serif;font-weight:700;color:var(--navy);font-size:84px;line-height:1.05}
+#url{position:absolute;left:60px;width:960px;top:1214px;text-align:center;font-weight:700;font-size:44px;color:var(--ink);letter-spacing:.01em}
+#cta{position:absolute;left:230px;top:1290px;width:620px;height:104px;border-radius:52px;background:var(--gold);color:var(--deep);font-weight:800;font-size:42px;display:flex;align-items:center;justify-content:center;gap:16px;box-shadow:0 18px 40px rgba(216,164,44,.35)}
+#endSub{position:absolute;left:60px;width:960px;top:1418px;text-align:center;font-family:"JetBrains Mono",monospace;font-size:24px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+#flash{background:#fff;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="60">
+  <div id="bgDark" class="layer"></div>
+  <div id="grid" class="layer"></div>
+  <svg id="stage" class="layer" width="1080" height="1920" viewBox="0 0 1080 1920">
+    <defs id="defs"></defs>
+    <g id="cam"><g id="shake"><g id="world"></g></g></g>
+  </svg>
+  <div id="ui" class="layer"></div>
+  <svg id="ovl" class="layer" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+  <div id="end">
+    <div id="endPanel"></div>
+    <div id="logoWrap"><img id="logo" src="assets/logo.svg" alt="YAKÜ Gutachten"></div>
+    <div class="eln" id="e1" style="top:1000px">Schaden verstanden.</div>
+    <div class="eln" id="e2" style="top:1096px"><span style="color:#A87A10">Klar bewertet.</span></div>
+    <div id="url">yaku-gutachten.de</div>
+    <div id="cta"><span>Jetzt Schaden melden</span><svg width="40" height="40" viewBox="0 0 40 40"><path d="M8 20h22M22 11l9 9-9 9" stroke="#0A1B38" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div id="endSub">Kfz-Sachverständige · München &amp; Umgebung</div>
+  </div>
+  <div id="hl" class="layer"></div>
+  <div id="cap" class="layer"></div>
+  <div id="flash" class="layer"></div>
+</div>
+<script>
+(function(){
+/* ============ CONSTANTS ============ */
+const S = 1.35, CARX = 108, GROUND = 1180, FRONT_Y = 1262, BACK_Y = 1128;
+const NS = "http://www.w3.org/2000/svg";
+const C = {navy:"#07306E", deep:"#0A1B38", gold:"#D8A42C", gold2:"#E9C46A", paper:"#F4F1EA",
+  car:"#6F98CF", carD:"#5A84BE", carL:"#93B6E2", carLine:"#4C74AC", glass:"#13294B", glassL:"#2D4C7C", bp:"#8FB6EA"};
+let seed = 7; const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const $ = (s) => document.querySelector(s);
+const world = $("#world"), ui = $("#ui"), ovl = $("#ovl"), defs = $("#defs");
+const addSVG = (parent, markup) => { const g = document.createElementNS(NS, "g"); g.innerHTML = markup; while (g.firstChild) parent.appendChild(g.firstChild); };
+const addHTML = (parent, markup) => { const d = document.createElement("div"); d.innerHTML = markup; const out = []; while (d.firstChild) { out.push(d.firstChild); parent.appendChild(d.firstChild); } return out; };
+
+/* ============ CAR ============ */
+const BODY = "M24,-46 C14,-60 12,-90 12,-110 C12,-128 18,-142 30,-152 L95,-228 C105,-240 120,-246 140,-246 L330,-248 C352,-248 368,-240 380,-228 L432,-172 L560,-152 C598,-146 620,-138 628,-122 C634,-108 634,-80 628,-60 C624,-50 614,-46 600,-46 L573,-46 A68,68 0 0 0 437,-46 L198,-46 A68,68 0 0 0 62,-46 Z";
+const GLASS = "M64,-164 L108,-222 C114,-231 124,-236 136,-236 L322,-238 C338,-238 350,-232 358,-224 L410,-170 Z";
+function wheel(id, bp) {
+  let spokes = "";
+  for (let i = 0; i < 5; i++) { const a = i * 72; spokes += `<rect x="-4.5" y="-31" width="9" height="26" rx="4" transform="rotate(${a})" fill="${bp ? "none" : "#E3E9F1"}" ${bp ? `stroke="${C.bp}" stroke-width="1.5" vector-effect="non-scaling-stroke"` : ""}/>`; }
+  if (bp) return `<g id="${id}"><circle r="54" fill="none" stroke="${C.bp}" stroke-width="2" vector-effect="non-scaling-stroke"/><circle r="33" fill="none" stroke="${C.bp}" stroke-width="1.5" vector-effect="non-scaling-stroke"/>${spokes}<circle r="7" fill="none" stroke="${C.bp}" stroke-width="1.5" vector-effect="non-scaling-stroke"/></g>`;
+  return `<g id="${id}"><circle r="54" fill="#1C2333"/><circle r="47" fill="none" stroke="#2A3346" stroke-width="3"/><circle r="34" fill="#B8C3D2"/><circle r="30" fill="#9AA8BB"/>${spokes}<circle r="9" fill="#5E6B82"/><circle r="3.5" fill="#C9D2DE"/></g>`;
+}
+function carSVG(p, bp) {
+  const st = bp ? `fill="none" stroke="${C.bp}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"` : "";
+  const sw = (w, col) => `stroke="${col || C.bp}" stroke-width="${w}" vector-effect="non-scaling-stroke" fill="none"`;
+  const well = (cx) => `<path d="M${cx - 64},-46 A64,64 0 0 1 ${cx + 64},-46 Z" fill="${bp ? "none" : "#24324B"}"/>`;
+  let s = `<g id="${p}"><g transform="scale(${S})">`;
+  if (!bp) s += `<ellipse id="${p}-shadow" cx="322" cy="3" rx="322" ry="13" fill="#0A1B38" opacity=".16"/>`;
+  s += `<g id="${p}-body">`;
+  s += well(130) + well(505);
+  if (!bp) {
+    s += `<clipPath id="${p}-clip"><path d="${BODY}"/></clipPath>`;
+    s += `<path d="${BODY}" fill="${C.car}"/>`;
+    s += `<g clip-path="url(#${p}-clip)"><rect x="0" y="-98" width="660" height="56" fill="${C.carD}"/><rect x="0" y="-176" width="660" height="9" fill="${C.carL}" opacity=".8"/><rect x="0" y="-104" width="660" height="4" fill="${C.carL}" opacity=".5"/></g>`;
+    s += `<g id="${p}-interior"><path d="M262,-60 L262,-236 L330,-237 C346,-237 354,-232 360,-224 L410,-170 L418,-60 Z" fill="#1F3557"/><path d="M300,-150 C296,-196 316,-212 336,-206 L344,-150 Z" fill="#33507E"/><path d="M276,-120 L404,-120" stroke="#2B4670" stroke-width="10"/></g>`;
+    s += `<path d="${GLASS}" fill="${C.glass}"/>`;
+    s += `<g opacity=".55"><path d="M150,-236 L120,-170 L136,-170 L166,-236 Z" fill="${C.glassL}"/><path d="M296,-237 L272,-170 L280,-170 L304,-237 Z" fill="${C.glassL}"/></g>`;
+    s += `<rect x="128" y="-236" width="12" height="70" fill="${C.car}"/><rect x="250" y="-238" width="13" height="72" fill="${C.car}"/>`;
+    s += `<path d="M140,-166 L140,-58 M24,-150 L98,-150" ${sw(2.2, C.carLine)}/>`;
+    s += `<rect x="212" y="-150" width="26" height="6" rx="3" fill="${C.carLine}"/>`;
+    s += `<circle cx="100" cy="-128" r="7" fill="none" stroke="${C.carLine}" stroke-width="2"/>`;
+    s += `<path d="M12,-96 L72,-96" ${sw(2.2, C.carLine)}/><rect x="14" y="-82" width="12" height="7" rx="2" fill="#C8463F"/>`;
+    s += `<g id="${p}-tail"><path d="M14,-142 C14,-148 20,-151 30,-151 L44,-149 L42,-114 L14,-112 Z" fill="#D2463F"/><path d="M18,-144 L38,-145 L37,-136 L18,-135 Z" fill="#F08779" opacity=".8"/></g>`;
+    s += `<path d="M592,-146 L626,-132 C631,-128 631,-122 626,-119 L594,-121 Z" fill="#FFF3D2"/><path d="M598,-140 L618,-131 L600,-131 Z" fill="#fff"/>`;
+    s += `<rect x="584" y="-84" width="42" height="15" rx="6" fill="#3D5E8E"/><path d="M570,-96 L632,-96" ${sw(2.2, C.carLine)}/>`;
+    s += `<path d="M404,-188 L428,-196 C434,-196 436,-188 432,-182 L410,-178 Z" fill="${C.carD}"/>`;
+    // front door (opens)
+    s += `<g id="${p}-door"><path d="M262,-166 L410,-169 L418,-60 L262,-60 Z" fill="${C.car}"/><path d="M262,-104 L418,-104" stroke="${C.carL}" stroke-width="4" opacity=".5"/><path d="M262,-237 L322,-238 C338,-238 350,-232 358,-224 L410,-170 L262,-167 Z" fill="${C.glass}"/><path d="M296,-237 L272,-168 L280,-168 L304,-237 Z" fill="${C.glassL}" opacity=".55"/><path d="M262,-166 L262,-60 M418,-60 L410,-169" ${sw(2.2, C.carLine)}/><rect x="366" y="-150" width="26" height="6" rx="3" fill="${C.carLine}"/></g>`;
+    // damage
+    s += `<g id="${p}-dmg" opacity="0">
+      <path d="M12,-96 L48,-92 L36,-72 L52,-52 L22,-47 C14,-60 12,-80 12,-96 Z" fill="#46689A" opacity=".75"/>
+      <path d="M16,-92 L32,-84 L22,-74 L40,-66 L28,-54" stroke="#203E68" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <path d="M44,-90 L56,-80" stroke="#203E68" stroke-width="2" fill="none"/>
+      <ellipse cx="80" cy="-133" rx="21" ry="11" fill="#4A71A8" opacity=".9"/><path d="M62,-139 Q80,-150 98,-139" stroke="#B9D2F0" stroke-width="2.5" fill="none"/>
+      <path d="M150,-114 L232,-104 M156,-107 L224,-99 M164,-100 L206,-96" stroke="#F1F6FD" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M20,-148 L29,-134 L22,-120 M29,-134 L42,-130" stroke="#FFE6E1" stroke-width="1.8" fill="none"/>
+      <path d="M30,-132 L41,-137 L39,-123 Z" fill="#3B1E26"/>
+    </g>`;
+  } else {
+    s += `<path d="${BODY}" ${st}/><path d="${GLASS}" ${st}/>`;
+    s += `<path d="M140,-166 L140,-58 M262,-166 L262,-60 M418,-60 L410,-169 M12,-96 L72,-96 M570,-96 L632,-96 M24,-150 L98,-150" ${sw(1.5)} opacity=".8"/>`;
+    s += `<path d="M592,-146 L626,-132 C631,-128 631,-122 626,-119 L594,-121 Z" ${st}/>`;
+    s += `<g id="${p}-hot"><path d="M14,-142 C14,-148 20,-151 30,-151 L44,-149 L42,-114 L14,-112 Z" ${sw(3, C.gold2)}/><path d="M12,-96 L48,-92 L36,-72 L52,-52 L22,-47 C14,-60 12,-80 12,-96 Z" ${sw(3, C.gold2)}/><ellipse cx="80" cy="-133" rx="21" ry="11" ${sw(3, C.gold2)}/></g>`;
+    s += `<path d="M0,22 L640,22 M0,14 L0,30 M640,14 L640,30" ${sw(1.2)} opacity=".6"/>`;
+  }
+  s += `<g transform="translate(130,-54)">${wheel(p + "-wr", bp)}</g><g transform="translate(505,-54)">${wheel(p + "-wf", bp)}</g>`;
+  s += `</g></g></g>`;
+  return s;
+}
+function car2SVG() {
+  return `<g id="car2"><g transform="scale(${S})"><ellipse cx="-120" cy="3" rx="200" ry="12" fill="#0A1B38" opacity=".14"/>
+    <path d="M-330,-46 L-330,-150 L-200,-160 L-150,-226 C-140,-238 -128,-242 -110,-242 L-60,-242 C-40,-240 -30,-232 -20,-220 L22,-160 C44,-154 56,-146 60,-130 C64,-110 64,-80 60,-60 C58,-50 52,-46 42,-46 L14,-46 A62,62 0 0 0 -110,-46 Z" fill="#B7AE9F"/>
+    <path d="M-190,-162 L-146,-222 C-140,-230 -130,-234 -118,-234 L-64,-234 C-48,-234 -40,-228 -32,-218 L6,-164 Z" fill="#2E3B52"/>
+    <path d="M30,-142 L58,-128 C62,-124 62,-118 58,-116 L30,-118 Z" fill="#FFF3D2"/><rect x="20" y="-84" width="40" height="14" rx="6" fill="#7E766A"/>
+    <path d="M-110,-46 A62,62 0 0 1 14,-46 Z" fill="#24324B"/>
+    <g transform="translate(-48,-52)"><circle r="50" fill="#1C2333"/><circle r="30" fill="#B8C3D2"/><circle r="8" fill="#5E6B82"/></g></g></g>`;
+}
+
+/* ============ PEOPLE ============ */
+function personSVG(p, o) {
+  const k = o.kind;
+  const leg = (x) => `<rect x="${x - 12}" y="-132" width="24" height="122" rx="11" fill="${o.pants}"/><path d="M${x - 13},-16 h20 a11 11 0 0 1 11 11 v3 h-31 z" fill="${o.shoe}"/><rect x="${x - 13}" y="-4" width="31" height="4" rx="2" fill="${o.sole}"/>`;
+  const arm = (sx, side) => `<rect x="${sx - 11}" y="-234" width="22" height="64" rx="11" fill="${o.top}"/>
+     <g id="${p}-fore${side}"><rect x="${sx - 10}" y="-184" width="20" height="58" rx="10" fill="${o.top}"/><rect x="${sx - 10}" y="-140" width="20" height="10" rx="4" fill="${o.cuff}"/>
+     <g id="${p}-hand${side}"><circle cx="${sx}" cy="-122" r="11.5" fill="${o.skin}"/>
+       <g id="${p}-thumb${side}" opacity="0"><rect x="${sx - 4}" y="-146" width="9" height="20" rx="4.5" fill="${o.skin}"/><path d="M${sx - 4},-134 h9" stroke="${o.skinD}" stroke-width="1.5"/></g></g></g>`;
+  let torso;
+  if (k === "w") {
+    torso = `<path d="M-38,-238 C-26,-248 26,-248 38,-238 C46,-202 46,-164 42,-124 L-42,-124 C-46,-164 -46,-202 -38,-238 Z" fill="${o.top}"/>
+      <rect x="-42" y="-138" width="84" height="14" rx="6" fill="${o.topD}"/><path d="M-13,-245 Q0,-228 13,-245 Z" fill="${o.skinD}"/>`;
+  } else {
+    torso = `<path d="M-40,-238 C-28,-250 28,-250 40,-238 C48,-200 48,-160 44,-114 L-44,-114 C-48,-160 -48,-200 -40,-238 Z" fill="${o.top}"/>
+      <path d="M-14,-246 L0,-222 L14,-246 Z" fill="#E7ECF3"/><path d="M0,-222 L0,-118" stroke="#2C4774" stroke-width="2.5"/>
+      <path d="M-30,-160 h20 M10,-160 h20" stroke="#2C4774" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="12" y="-214" width="26" height="12" rx="3" fill="${C.gold}"/><text x="25" y="-205" text-anchor="middle" font-family="Inter" font-weight="800" font-size="7.5" fill="${C.deep}">YAKÜ</text>
+      <rect x="-44" y="-124" width="88" height="10" rx="4" fill="${o.topD}"/>`;
+  }
+  const hairBack = k === "w"
+    ? `<circle cx="0" cy="-298" r="42" fill="${o.hair}"/><circle cx="10" cy="-347" r="17" fill="${o.hair}"/><path d="M-40,-300 C-44,-270 -40,-256 -30,-250 L-26,-290 Z" fill="${o.hair}"/>`
+    : "";
+  const hairFront = k === "w"
+    ? `<path d="M-38,-296 C-40,-330 -12,-344 10,-340 C32,-336 42,-318 38,-294 C30,-312 12,-318 -6,-316 C-22,-314 -32,-306 -38,-296 Z" fill="${o.hair}"/>`
+    : `<path d="M-37,-298 C-40,-336 -10,-346 8,-344 C30,-342 42,-324 37,-296 C33,-314 14,-322 -4,-320 C-20,-318 -32,-310 -37,-298 Z" fill="${o.hair}"/>
+       <path d="M-35,-292 C-35,-262 -18,-251 0,-251 C18,-251 35,-262 35,-292 C31,-280 24,-268 14,-266 C6,-268 -6,-268 -14,-266 C-24,-268 -31,-280 -35,-292 Z" fill="${o.hair}" opacity=".93"/>`;
+  const glasses = k === "m" ? `<g fill="none" stroke="#1F2430" stroke-width="2.4"><circle cx="-13" cy="-293" r="10.5"/><circle cx="13" cy="-293" r="10.5"/><path d="M-2.5,-294 Q0,-297 2.5,-294"/></g>` : "";
+  const mc = "#6E2A22";
+  const face = `<g id="${p}-face">
+      <g id="${p}-eyes"><ellipse id="${p}-eyeL" cx="-13" cy="-293" rx="4" ry="5.6" fill="#211915"/><ellipse id="${p}-eyeR" cx="13" cy="-293" rx="4" ry="5.6" fill="#211915"/></g>
+      <g id="${p}-eyesH" opacity="0" stroke="#211915" stroke-width="3" fill="none" stroke-linecap="round"><path d="M-18,-291 Q-13,-298 -8,-291"/><path d="M8,-291 Q13,-298 18,-291"/></g>
+      <path id="${p}-browL" d="M-20,-307 Q-13,-311 -6,-307" stroke="${o.hair}" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path id="${p}-browR" d="M6,-307 Q13,-311 20,-307" stroke="${o.hair}" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <path d="M1,-290 Q5,-281 0,-279" stroke="${o.skinD}" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="-22" cy="-277" rx="7" ry="4" fill="#E58C77" opacity="${k === "w" ? .5 : .25}"/><ellipse cx="22" cy="-277" rx="7" ry="4" fill="#E58C77" opacity="${k === "w" ? .5 : .25}"/>
+      ${glasses}
+      <path id="${p}-mSmile" d="M-9,-272 Q0,-264 9,-272" stroke="${mc}" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path id="${p}-mWorry" d="M-8,-267 Q0,-273 8,-267" stroke="${mc}" stroke-width="3" fill="none" stroke-linecap="round" opacity="0"/>
+      <ellipse id="${p}-mO" cx="0" cy="-269" rx="4.5" ry="5.8" fill="${mc}" opacity="0"/>
+      <g id="${p}-mGrin" opacity="0"><path d="M-12,-275 Q0,-258 12,-275 Z" fill="${mc}"/><path d="M-9,-274 L9,-274" stroke="#fff" stroke-width="2.5"/></g>
+      <path id="${p}-mTalk" d="M-8,-272 Q0,-262 8,-272 Z" fill="${mc}" opacity="0"/>
+    </g>`;
+  return `<g id="${p}"><g transform="scale(${o.s})">
+    <ellipse cx="0" cy="2" rx="48" ry="9" fill="#0A1B38" opacity=".14"/>
+    <g id="${p}-bob">
+      <g id="${p}-legB">${leg(-14)}</g><g id="${p}-legF">${leg(14)}</g>
+      ${torso}
+      <rect x="-8" y="-260" width="16" height="24" fill="${o.skinD}"/>
+      <g id="${p}-head">${hairBack}<ellipse cx="-35" cy="-290" rx="6" ry="8.5" fill="${o.skinD}"/><ellipse cx="35" cy="-290" rx="6" ry="8.5" fill="${o.skinD}"/>
+        <ellipse cx="0" cy="-292" rx="35" ry="39" fill="${o.skin}"/>${face}${hairFront}</g>
+      <g id="${p}-tool">${o.tool || ""}</g>
+      <g id="${p}-armB">${arm(-40, "B")}</g><g id="${p}-armF">${arm(40, "F")}</g>
+    </g></g></g>`;
+}
+const TABLET = (p) => `<g id="${p}-tab"><rect x="-40" y="-222" width="60" height="76" rx="8" fill="#0E1A2E"/><rect id="${p}-scr" x="-35" y="-216" width="50" height="64" rx="5" fill="#A9CBF2"/>
+  <rect x="-30" y="-210" width="28" height="5" rx="2.5" fill="#07306E"/><rect x="-30" y="-200" width="38" height="4" rx="2" fill="#5F86BA"/><rect x="-30" y="-192" width="32" height="4" rx="2" fill="#5F86BA"/>
+  <rect x="-30" y="-182" width="38" height="20" rx="3" fill="#E9C46A" opacity=".9"/></g>
+  <g id="${p}-cam" opacity="0"><rect x="-44" y="-214" width="68" height="44" rx="9" fill="#1E2532"/><circle cx="-10" cy="-192" r="16" fill="#3A465C"/><circle cx="-10" cy="-192" r="10" fill="#0D1320"/><circle cx="-14" cy="-196" r="3" fill="#8FB6EA"/><rect x="10" y="-210" width="10" height="6" rx="2" fill="#E9C46A"/></g>`;
+const PHONE = `<g id="drv-phone" opacity="0"><rect x="-17" y="-222" width="34" height="58" rx="6" fill="#121A28"/><rect x="-14" y="-218" width="28" height="50" rx="3" fill="#FFFFFF"/><rect x="-14" y="-218" width="28" height="11" rx="3" fill="#0A1B38"/><rect x="-10" y="-202" width="20" height="3" rx="1.5" fill="#C9D3E0"/><rect x="-10" y="-196" width="16" height="3" rx="1.5" fill="#C9D3E0"/><rect x="-10" y="-189" width="20" height="10" rx="2" fill="#DDE6F2"/><rect x="-10" y="-176" width="12" height="3" rx="1.5" fill="#E9C46A"/></g>`;
+const DRV = {kind: "w", s: S, skin: "#F1C6A4", skinD: "#DDA585", hair: "#3B2A22", top: "#E0765A", topD: "#C65F44", cuff: "#C65F44", pants: "#2B3E60", shoe: "#FBFBFB", sole: "#C9CED6", tool: PHONE};
+const GUT = (p, s) => ({kind: "m", s: s, skin: "#D9A07C", skinD: "#BE845F", hair: "#2B211C", top: "#1B2F52", topD: "#14243F", cuff: "#14243F", pants: "#2E3440", shoe: "#3A2B22", sole: "#20170F", tool: TABLET(p)});
+
+/* ============ SCENERY ============ */
+function scenery() {
+  let s = `<g id="scn">`;
+  s += `<g id="scnFar" fill="#E6E0D3">`;
+  const far = [[0, 820, 120], [110, 770, 90], [190, 860, 140], [320, 800, 100], [600, 840, 130], [900, 790, 110], [1000, 860, 140]];
+  far.forEach(([x, y, w]) => { s += `<rect x="${x}" y="${y}" width="${w}" height="${1160 - y}"/>`; });
+  // Frauenkirche towers (Munich hint)
+  [[740, 0], [818, 0]].forEach(([x]) => { s += `<rect x="${x}" y="690" width="54" height="470"/><path d="M${x},694 C${x},640 ${x + 54},640 ${x + 54},694 Z"/><rect x="${x + 25}" y="618" width="4" height="34"/>`; });
+  s += `<rect x="760" y="780" width="110" height="380"/></g>`;
+  s += `<g id="scnMid" fill="#DED6C6">`;
+  const mid = [[-20, 930, 160], [150, 980, 120], [440, 950, 150], [610, 1000, 120], [930, 960, 170]];
+  mid.forEach(([x, y, w]) => { s += `<rect x="${x}" y="${y}" width="${w}" height="${1160 - y}" rx="4"/>`; for (let r = y + 30; r < 1120; r += 54) for (let c = x + 22; c < x + w - 30; c += 44) s += `<rect x="${c}" y="${r}" width="18" height="24" rx="2" fill="#E8E2D6"/>`; });
+  [[300, 1070], [395, 1090], [880, 1080]].forEach(([x, y]) => { s += `<rect x="${x - 4}" y="${y}" width="8" height="${1160 - y}" fill="#C9BFAD"/><circle cx="${x}" cy="${y - 20}" r="44" fill="#CFD8C4"/><circle cx="${x + 26}" cy="${y + 4}" r="30" fill="#C4CFB8"/>`; });
+  s += `</g>`;
+  s += `<rect x="-600" y="1150" width="2400" height="12" fill="#D4CBBA"/><rect x="-600" y="1162" width="2400" height="300" fill="#E5DFD3"/>`;
+  s += `<g id="lane" fill="#F4F1EA">`; for (let x = -600; x < 1800; x += 180) s += `<rect x="${x}" y="1356" width="96" height="10" rx="5"/>`; s += `</g>`;
+  s += `</g>`;
+  return s;
+}
+
+/* ============ BUILD STAGE ============ */
+addSVG(world, scenery());
+addSVG(world, `<g id="orbitG" opacity="0"><ellipse cx="540" cy="1196" rx="520" ry="96" fill="none" stroke="${C.gold}" stroke-width="4" stroke-dasharray="12 16" stroke-linecap="round" opacity=".45"/><ellipse id="orbit" cx="540" cy="1196" rx="520" ry="96" fill="none" stroke="${C.gold}" stroke-width="6" stroke-linecap="round" transform="translate(0,2392) scale(1,-1)"/><circle id="orbDot" r="12" fill="${C.gold}"/></g>`);
+addSVG(world, personSVG("gutb", GUT("gutb", S * 0.9)));
+addSVG(world, car2SVG());
+addSVG(world, carSVG("car", false));
+addSVG(world, carSVG("carbp", true));
+addSVG(world, `<g id="scan" opacity="0"><defs><linearGradient id="beamG" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".2" stop-color="${C.gold2}" stop-opacity=".55"/><stop offset="1" stop-color="${C.gold2}" stop-opacity="0"/></linearGradient></defs>
+  <rect id="beam" x="-120" y="820" width="120" height="380" fill="url(#beamG)"/></g>
+  <g id="brk" fill="none" stroke="${C.gold}" stroke-width="7" stroke-linecap="round" opacity="0">
+  <path d="M96,880 V836 H140"/><path d="M984,880 V836 H940"/><path d="M96,1160 V1204 H140"/><path d="M984,1160 V1204 H940"/></g>`);
+addSVG(world, personSVG("drv", DRV));
+addSVG(world, personSVG("gut", GUT("gut", S)));
+// world fx: dust, debris, question marks, sparkles
+let fx = `<g id="dust">`;
+[[-10, -10, 34], [30, -40, 26], [-30, 20, 22], [10, 30, 30]].forEach(([dx, dy, r], i) => { fx += `<circle class="dp" id="dp${i}" cx="${118 + dx}" cy="${1110 + dy}" r="${r}" fill="#D9D2C4"/>`; });
+fx += `</g><g id="debris">`;
+for (let i = 0; i < 7; i++) fx += `<path class="db" id="db${i}" d="M0,-6 L6,4 L-5,5 Z" fill="${i % 2 ? "#D2463F" : "#F08779"}" transform="translate(140,${980 + i * 6})"/>`;
+fx += `</g><g id="qm" font-family="Fraunces" font-weight="800" fill="${C.navy}">`;
+fx += `<text id="q1" x="0" y="0" font-size="96" data-layout-allow-overlap>?</text><text id="q2" x="0" y="0" font-size="74" data-layout-allow-overlap>?</text><text id="q3" x="0" y="0" font-size="58">?</text></g>`;
+fx += `<g id="spk" fill="${C.gold}">`; for (let i = 0; i < 5; i++) fx += `<path id="sp${i}" d="M0,-16 L4,-4 L16,0 L4,4 L0,16 L-4,4 L-16,0 L-4,-4 Z"/>`; fx += `</g>`;
+addSVG(world, fx);
+
+/* overlay (screen-space) */
+addSVG(ovl, `
+  <g id="bumm" opacity="0"><path id="burst" d="${(() => { let d = ""; for (let i = 0; i < 24; i++) { const a = i / 24 * Math.PI * 2; const r = i % 2 ? 110 : 190 + (i % 4 === 0 ? 30 : 0); d += (i ? "L" : "M") + (Math.cos(a) * r * 1.25).toFixed(1) + "," + (Math.sin(a) * r).toFixed(1); } return d + "Z"; })()}" fill="${C.deep}"/>
+   <text x="0" y="26" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="100" fill="${C.gold2}">BUMM!</text></g>
+  <g id="lines" stroke="${C.navy}" stroke-width="7" stroke-linecap="round" opacity="0"><path d="M-60,0 h-120"/><path d="M-40,40 h-170"/><path d="M-70,80 h-110"/></g>
+  <g id="meas" fill="none" stroke="${C.gold}" stroke-width="5" stroke-linecap="round">
+    <path id="mA" d="M400,870 H514 M412,860 L400,870 L412,880 M502,860 L514,870 L502,880"/><path id="mA1" d="M400,848 V892"/><path id="mA2" d="M514,848 V892"/>
+    <path id="mB" d="M246,1028 V1163 M236,1040 L246,1028 L256,1040 M236,1151 L246,1163 L256,1151"/><path id="mB1" d="M226,1028 H266"/><path id="mB2" d="M226,1163 H266"/>
+    <rect id="mC" x="262" y="1010" width="132" height="168" rx="20" stroke-dasharray="14 10" stroke-width="5"/>
+  </g>
+  <g id="camHand">
+    <path d="M1180,1700 L1000,1330 C990,1300 1000,1280 1030,1270 L1180,1250 Z" fill="#1B2F52"/>
+    <rect x="770" y="1120" width="230" height="150" rx="22" fill="#1E2532"/>
+    <rect x="790" y="1104" width="70" height="24" rx="8" fill="#2A3344"/>
+    <circle cx="860" cy="1196" r="58" fill="#3A465C"/><circle cx="860" cy="1196" r="40" fill="#0D1320"/><circle cx="846" cy="1182" r="10" fill="#8FB6EA" opacity=".8"/>
+    <rect id="flashWin" x="930" y="1134" width="48" height="24" rx="6" fill="#E9C46A"/>
+    <g id="thumb"><rect x="900" y="1088" width="40" height="22" rx="8" fill="#2A3344"/><path d="M948,1112 C960,1080 990,1080 1004,1096 L1010,1140 L956,1150 Z" fill="#D9A07C"/></g>
+    <path d="M1000,1150 C1030,1140 1050,1170 1046,1210 C1042,1250 1020,1270 996,1266 Z" fill="#D9A07C"/>
+  </g>`);
+
+/* ============ HEADLINES ============ */
+function headline(id, num, label, title) {
+  const words = title.split(" ").map(w => `<span class="w">${w}</span>`).join(" ");
+  const chip = num ? `<div class="chip"><span class="num">${num}</span><span class="cl">${label}</span></div>` : "";
+  addHTML($("#hl"), `<div class="hd" id="${id}">${chip}<div class="ttl"><span class="ln">${words}</span></div></div>`);
+}
+addHTML($("#hl"), `<div class="hd" id="hdA" style="top:300px;left:60px;width:960px;text-align:center"><div class="ttl" style="font-size:118px;font-weight:800;margin-top:0;text-align:center"><span class="ln"><span class="w">Unfall</span> <span class="w">gehabt?</span></span></div></div>`);
+addHTML($("#hl"), `<div class="hd" id="hd0"><div class="ttl"><span class="ln"><span class="w">Und</span> <span class="w">jetzt?</span></span></div><span class="uline" id="ul0"></span></div>`);
+headline("hd1", "1", "Schritt 1 von 5", "Fahrzeug anschauen.");
+headline("hd2", "2", "Schritt 2 von 5", "Schaden dokumentieren.");
+headline("hd3", "3", "Schritt 3 von 5", "Fahrzeug prüfen.");
+headline("hd4", "4", "Schritt 4 von 5", "Schaden berechnen.");
+headline("hd5", "5", "Schritt 5 von 5", "Alles in einem Gutachten.");
+
+/* ============ CAPTIONS (Sinnabschnitte) ============ */
+// [start, end, text]  — *Wort* = Hervorhebung
+const CAPS = [
+  [1.33, 3.15, "Unfall gehabt – und jetzt?"],
+  [3.15, 4.74, "Ein *Gutachter* kommt."],
+  [4.74, 7.46, "Aber was macht der *eigentlich?*"],
+  [7.46, 9.57, "Zuerst schaut er sich *dein Fahrzeug*"],
+  [9.57, 11.62, "und den Schaden *ganz genau* an."],
+  [14.18, 16.95, "Beschädigte Teile werden *fotografiert,*"],
+  [16.95, 17.58, "*vermessen*"],
+  [17.58, 19.53, "und genau *dokumentiert.*"],
+  [22.18, 24.73, "Auch *Fahrzeugdaten* und *Laufleistung,*"],
+  [24.73, 26.38, "*Ausstattung* und *Zustand*"],
+  [26.38, 28.7, "spielen bei der *Bewertung* eine Rolle."],
+  [30.78, 32.0, "Dann wird *berechnet:*"],
+  [32.0, 34.01, "Welche *Reparaturen* sind nötig?"],
+  [34.01, 35.85, "Welche *Kosten* entstehen?"],
+  [36.38, 37.98, "Je nach Schaden zählen auch"],
+  [37.98, 39.91, "*weitere Werte* fürs Gutachten."],
+  [42.13, 44.17, "Am Ende kommt *alles zusammen:*"],
+  [44.17, 45.81, "*Fotos,* *Fahrzeugdaten,*"],
+  [45.81, 48.38, "*Schadenbeschreibung* und *Kalkulation*"],
+  [48.38, 50.76, "in *einem* vollständigen *Gutachten.*"],
+  [50.76, 52.34, "Sauber *dokumentiert.*"],
+  [52.34, 54.1, "Nachvollziehbar *bewertet.*"],
+  [54.1, 56.15, "Verständlich *erklärt.*"]
+];
+CAPS.forEach((c, i) => {
+  const html = c[2].replace(/\*([^*]+)\*/g, '<span class="hl"><span class="mk"></span><span class="t">$1</span></span>');
+  addHTML($("#cap"), `<div class="cp" id="cp${i}"><div class="cpi"><span class="t">${html}</span></div></div>`);
+});
+
+/* ============ UI ELEMENTS ============ */
+const sx3 = (lx) => 22 + 2.0 * (CARX + S * lx), sy3 = (ly) => -1073 + 2.0 * (GROUND + S * ly);
+// pins (scene 3)
+const PINS = [
+  {n: 1, lx: 190, ly: -106, label: "Kratzer", tx: 700, ty: 902},
+  {n: 2, lx: 82, ly: -133, label: "Delle", tx: 500, ty: 954},
+  {n: 3, lx: 30, ly: -72, label: "Stoßfänger", tx: 262, ty: 1192},
+  {n: 4, lx: 28, ly: -132, label: "Rückleuchte", tx: 56, ty: 856}
+];
+PINS.forEach((p) => {
+  const x = sx3(p.lx), y = sy3(p.ly);
+  addHTML(ui, `<div class="pin" id="pin${p.n}" style="left:${x}px;top:${y}px">${p.n}</div>`);
+  const tx = p.tx, ty = p.ty;
+  addHTML(ui, `<div class="tag" id="tag${p.n}" style="left:${tx}px;top:${ty}px">${p.label}</div>`);
+});
+addHTML(ui, `<div class="mtag" id="mtA" style="left:404px;top:796px">118 mm</div><div class="mtag" id="mtB" style="left:110px;top:1070px">41 mm</div>
+  <div class="note" id="exNote" style="left:84px;top:1306px">Beispielhafte Darstellung</div>`);
+// polaroids
+function miniCar(id, vb) { return `<svg width="212" height="196" viewBox="${vb}" preserveAspectRatio="xMidYMid slice">${carSVG(id, false)}</svg>`; }
+for (let i = 0; i < 4; i++) addHTML(ui, `<div class="pol" id="pol${i}"><div class="ph">${miniCar("pc" + i, ["-14 -345 351 358", "62 -212 106 92", "-4 -152 118 104", "2 -218 80 74"][i])}</div><div class="cap" data-layout-allow-overlap data-layout-allow-occlusion>FOTO 0${i + 1}</div></div>`);
+// data cards
+const ICON = {
+  car: `<svg width="34" height="34" viewBox="0 0 34 34"><path d="M5 22v-5l4-7h16l4 7v5z" fill="#07306E"/><circle cx="10" cy="23" r="3.5" fill="#E9C46A"/><circle cx="24" cy="23" r="3.5" fill="#E9C46A"/></svg>`,
+  cal: `<svg width="32" height="32" viewBox="0 0 32 32"><rect x="4" y="7" width="24" height="21" rx="4" fill="#07306E"/><rect x="4" y="7" width="24" height="7" rx="3" fill="#E9C46A"/><rect x="9" y="3" width="3" height="7" rx="1.5" fill="#07306E"/><rect x="20" y="3" width="3" height="7" rx="1.5" fill="#07306E"/></svg>`,
+  km: `<svg width="34" height="34" viewBox="0 0 34 34"><path d="M5 24a12 12 0 1 1 24 0" stroke="#07306E" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M17 24l7-8" stroke="#D8A42C" stroke-width="4" stroke-linecap="round"/></svg>`,
+  star: `<svg width="34" height="34" viewBox="0 0 34 34"><path d="M17 4l4 9 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" fill="#07306E"/></svg>`,
+  gear: `<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="7" fill="none" stroke="#07306E" stroke-width="5"/><path d="M17 3v6M17 25v6M3 17h6M25 17h6M7 7l4 4M23 23l4 4M27 7l-4 4M11 23l-4 4" stroke="#07306E" stroke-width="4" stroke-linecap="round"/></svg>`
+};
+const DC = [
+  {id: "dcM", l: 100, t: 960, w: 410, ic: "car", lb: "Modell", vl: "Kompaktwagen"},
+  {id: "dcB", l: 570, t: 960, w: 410, ic: "cal", lb: "Baujahr", vl: "2019"},
+  {id: "dcK", l: 100, t: 1084, w: 410, ic: "km", lb: "Kilometerstand", vl: `<span id="kmv">0</span> km`},
+  {id: "dcZ", l: 570, t: 1084, w: 410, ic: "star", lb: "Zustand", vl: `gepflegt <span style="color:#B98712;letter-spacing:2px">●●●●</span><span style="color:#9AA5B5">●</span>`},
+  {id: "dcA", l: 100, t: 1208, w: 880, ic: "gear", lb: "Ausstattung", vl: "Navi · Klima · LED · Alufelgen"}
+];
+DC.forEach((d) => addHTML(ui, `<div class="card dc" id="${d.id}" style="left:${d.l}px;top:${d.t}px;width:${d.w}px;height:108px"><div class="ic">${ICON[d.ic]}</div><div class="ct"><div class="lb">${d.lb}</div><div class="vl">${d.vl}</div></div></div>`));
+// connector lines scene 4 (overlay)
+addSVG(ovl, `<g id="conn" fill="none" stroke="${C.gold}" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round" opacity="0"></g><g id="srcDots"></g>`);
+// calc sheet
+const RI = {
+  w: `<svg width="26" height="26" viewBox="0 0 26 26"><path d="M17 3a6 6 0 0 0-6 8L3 19l4 4 8-8a6 6 0 0 0 8-6l-4 2-3-3z" fill="#E9C46A"/></svg>`,
+  p: `<svg width="26" height="26" viewBox="0 0 26 26"><rect x="3" y="3" width="9" height="9" rx="2" fill="#E9C46A"/><rect x="14" y="3" width="9" height="9" rx="2" fill="#8FB6EA"/><rect x="3" y="14" width="9" height="9" rx="2" fill="#8FB6EA"/><rect x="14" y="14" width="9" height="9" rx="2" fill="#E9C46A"/></svg>`,
+  c: `<svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" stroke="#E9C46A" stroke-width="3" fill="none"/><path d="M13 7v6l4 3" stroke="#E9C46A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+  l: `<svg width="26" height="26" viewBox="0 0 26 26"><rect x="4" y="3" width="18" height="9" rx="3" fill="#E9C46A"/><path d="M13 12v5" stroke="#8FB6EA" stroke-width="3"/><rect x="10" y="16" width="6" height="8" rx="2" fill="#8FB6EA"/></svg>`
+};
+const ROWS = [["Reparaturweg", "w", "#8FB6EA", .72], ["Ersatzteile", "p", "#E9C46A", .58], ["Arbeitszeit", "c", "#7FD1AE", .46], ["Lackierung", "l", "#F0A07F", .64]];
+let calc = `<div class="calc" id="calc"><div class="hdr"><span>KALKULATION</span><span style="color:#8FB6EA">SCHEMATISCH</span></div>`;
+ROWS.forEach((r, i) => { calc += `<div class="row" id="row${i}" style="top:${80 + i * 62}px"><div class="ri">${RI[r[1]]}</div><div class="rl">${r[0]}</div><div class="bar"><span class="bf" id="bf${i}" style="background:${r[2]};width:${r[3] * 100}%"></span></div><div class="ok" id="ok${i}">✓</div></div>`; });
+calc += `<div class="sum" id="sum"><div class="sl">Reparaturkosten</div><span class="stack"><span class="seg" id="sg0" style="left:0;width:34%;background:#E9C46A"></span><span class="seg" id="sg1" style="left:34%;width:28%;background:#7FD1AE"></span><span class="seg" id="sg2" style="left:62%;width:38%;background:#F0A07F"></span></span><div class="ok" id="okS" style="width:44px;height:44px;border-radius:22px;font-size:26px">✓</div></div></div>`;
+addHTML(ui, calc);
+addHTML(ui, `<div class="note" id="xlab" style="left:562px;top:588px;color:#E9C46A;font-weight:700;font-size:26px">+ JE NACH SCHADEN</div>
+  <div class="xchip" id="x0" style="top:640px"><i></i>Wertminderung</div>
+  <div class="xchip" id="x1" style="top:712px"><i></i>Wiederbeschaffungswert</div>
+  <div class="xchip" id="x2" style="top:784px"><i></i>Restwert</div>`);
+// floating tokens (scene 6)
+addHTML(ui, `<div class="tok" id="tk0" style="left:120px;top:640px;width:200px;height:220px;padding:10px"><div style="height:160px;border-radius:6px;overflow:hidden;background:#DDE6F2">${`<svg width="180" height="160" viewBox="-7 -216 142 135" preserveAspectRatio="xMidYMid slice">${carSVG("tkc", false)}</svg>`}</div><div class="mono" style="font-size:18px;font-weight:700;color:#5D6B80;padding-top:10px">FOTOS</div></div>
+  <div class="tok" id="tk1" style="left:700px;top:620px;width:270px;height:110px;display:flex;align-items:center;gap:14px;padding:0 18px"><div style="width:52px;height:52px;border-radius:26px;background:#E9EEF6;display:flex;align-items:center;justify-content:center">${ICON.km}</div><div><div style="font-size:18px;color:#5D6B80;font-weight:600">Fahrzeugdaten</div><div style="font-size:28px;color:#07306E;font-weight:800">68.420 km</div></div></div>
+  <div class="tok" id="tk2" style="left:150px;top:1010px;width:250px;height:96px;display:flex;align-items:center;gap:14px;padding:0 18px"><div class="pin" style="position:relative;margin:0;left:0;top:0;width:48px;height:48px;font-size:22px">2</div><div style="font-size:28px;color:#0A1B38;font-weight:800">Schaden</div></div>
+  <div class="tok" id="tk3" style="left:660px;top:960px;width:290px;height:170px;background:#0E244A;padding:18px"><div class="mono" style="color:#E9C46A;font-size:18px;font-weight:700;letter-spacing:.12em">KALKULATION</div>${[.8, .6, .7].map((w, i) => `<div style="height:12px;border-radius:6px;margin-top:16px;width:${w * 100}%;background:${["#8FB6EA", "#E9C46A", "#F0A07F"][i]}"></div>`).join("")}</div>`);
+// document
+let doc = `<div id="docWrap">`;
+const PAGES = [
+  `<div class="ph1">KFZ-SCHADENGUTACHTEN</div><div style="padding:30px 30px 0"><img src="assets/logo.svg" style="width:230px;display:block"></div><h4 style="font-size:46px;line-height:1.05;padding-top:24px">Kfz-Schaden&shy;gutachten</h4><div style="margin:18px 30px;height:250px;border-radius:12px;background:#EEF2F8;overflow:hidden"><svg width="480" height="250" viewBox="-14 -351 891 378">${carSVG("dcv", false)}</svg></div><div class="ln2" style="width:60%"></div><div class="ln2" style="width:40%"></div>`,
+  `<div class="ph1">01 · FAHRZEUGDATEN</div><h4>Fahrzeugdaten</h4><div class="tbl"><b>Modell</b><span>Kompaktwagen</span><b>Baujahr</b><span>2019</span><b>Laufleistung</b><span>68.420 km</span><b>Ausstattung</b><span>Navi, Klima, LED</span><b>Zustand</b><span>gepflegt</span></div><div class="ln2"></div><div class="ln2" style="width:70%"></div><div class="ln2" style="width:80%"></div><div class="ln2" style="width:55%"></div>`,
+  `<div class="ph1">02 · FOTODOKUMENTATION</div><h4>Fotos</h4><div class="pgrid">${["-14 -345 351 358", "62 -212 106 92", "-4 -152 118 104", "2 -218 80 74"].map((vb, i) => `<div><svg width="225" height="170" viewBox="${vb}" preserveAspectRatio="xMidYMid slice">${carSVG("dp" + i + "c", false)}</svg></div>`).join("")}</div><div class="ln2" style="width:70%"></div>`,
+  `<div class="ph1">03 · SCHADENBESCHREIBUNG</div><h4>Schaden&shy;beschreibung</h4>${["Kratzer", "Delle", "Stoßfänger", "Rückleuchte"].map((t, i) => `<div style="display:flex;align-items:center;gap:14px;margin:16px 30px"><div class="pin" style="position:relative;margin:0;left:0;top:0;width:42px;height:42px;font-size:20px;box-shadow:none">${i + 1}</div><div style="font-weight:800;font-size:24px;color:#07306E;width:150px">${t}</div><div style="flex:1;height:10px;border-radius:5px;background:#E3E8F0"></div></div>`).join("")}<div class="ln2"></div><div class="ln2" style="width:75%"></div><div class="ln2" style="width:60%"></div>`,
+  `<div class="ph1">04 · KALKULATION</div><h4>Kalkulation</h4>${ROWS.map((r) => `<div style="display:flex;align-items:center;gap:14px;margin:18px 30px"><div style="font-weight:700;font-size:23px;color:#07306E;width:190px">${r[0]}</div><div style="flex:1;height:12px;border-radius:6px;background:#E3E8F0;overflow:hidden"><div style="height:12px;width:${r[3] * 100}%;background:${r[2]}"></div></div></div>`).join("")}<div style="margin:28px 30px;padding:18px;border-radius:12px;background:#FBF4E2;border:2px solid #E9C46A;font-family:Fraunces;font-weight:700;font-size:28px;color:#07306E">Reparaturkosten ✓</div>`
+];
+PAGES.forEach((pg, i) => { doc += `<div class="page" id="pg${i}" style="z-index:${10 - i}">${pg}</div>`; });
+doc += `</div>`;
+addHTML(ui, doc);
+addHTML(ui, `<div class="pchip" id="pchip">Deckblatt</div>`);
+["Deckblatt", "Fahrzeugdaten", "Fotos", "Schadenbeschreibung", "Kalkulation"].forEach((t, i) => addHTML(ui, `<div class="pchip" id="pc${i}" style="opacity:0;right:auto">${t}</div>`));
+$("#pchip").remove();
+
+/* ============ TIMELINE ============ */
+const tl = gsap.timeline({paused: true, defaults: {ease: "power2.out", immediateRender: false}});
+const at = (sel, vars, t) => tl.to(sel, vars, t);
+const ft = (sel, a, b, t) => tl.fromTo(sel, a, b, t);
+const set = (sel, vars, t) => tl.set(sel, vars, t);
+
+// ---- rig helpers
+const ORIG = {legB: "-14 -128", legF: "14 -128", armB: "-40 -222", armF: "40 -222", foreB: "-40 -176", foreF: "40 -176", head: "0 -254", bob: "0 0", handB: "-40 -122", handF: "40 -122"};
+const R = (p, part, v, t, d = .35, e = "power2.inOut") => tl.to(`#${p}-${part}`, Object.assign({svgOrigin: ORIG[part], duration: d, ease: e}, typeof v === "number" ? {rotation: v} : v), t);
+const MOUTHS = ["mSmile", "mWorry", "mO", "mGrin", "mTalk"];
+function mouth(p, m, t) { MOUTHS.forEach((x) => set(`#${p}-${x}`, {opacity: x === m ? 1 : 0}, t)); }
+function blink(p, t) { [["eyeL", "-13 -293"], ["eyeR", "13 -293"]].forEach(([e, o]) => { tl.to(`#${p}-${e}`, {scaleY: .1, svgOrigin: o, duration: .07, ease: "power1.in"}, t); tl.to(`#${p}-${e}`, {scaleY: 1, svgOrigin: o, duration: .09, ease: "power1.out"}, t + .07); }); }
+function look(p, dx, dy, t, d = .25) { tl.to(`#${p}-face`, {x: dx, y: dy || 0, duration: d, ease: "power2.inOut"}, t); }
+function brows(p, mode, t, d = .25) {
+  const m = {worry: [12, -12, -2], neutral: [0, 0, 0], up: [-6, 6, -5]}[mode];
+  tl.to(`#${p}-browL`, {rotation: m[0], y: m[2], svgOrigin: "-13 -307", duration: d}, t);
+  tl.to(`#${p}-browR`, {rotation: m[1], y: m[2], svgOrigin: "13 -307", duration: d}, t);
+}
+function talk(p, t0, t1) { // subtle mouth flaps for speaking characters
+  let t = t0, i = 0; while (t < t1 - .1) { set(`#${p}-mTalk`, {opacity: i % 2 ? 0 : 1}, t); set(`#${p}-mSmile`, {opacity: i % 2 ? 1 : 0}, t); t += .13 + (i % 3) * .04; i++; }
+  set(`#${p}-mTalk`, {opacity: 0}, t1); set(`#${p}-mSmile`, {opacity: 1}, t1);
+}
+function walk(p, x0, x1, t, dur, opt = {}) {
+  const step = opt.step || .3, amp = opt.amp || 22, n = Math.max(2, Math.round(dur / step));
+  const st = dur / n;
+  tl.fromTo(`#${p}`, {x: x0}, {x: x1, duration: dur, ease: opt.ease || "none"}, t);
+  const dir = x1 < x0 ? -1 : 1;
+  if (!opt.keepFace) look(p, 7 * dir, 0, t, .2);
+  tl.to(`#${p}-bob`, {rotation: 2.5 * dir, svgOrigin: "0 0", duration: .25}, t);
+  for (let i = 0; i < n; i++) {
+    const s = i % 2 ? 1 : -1, tt = t + i * st;
+    tl.to(`#${p}-legB`, {rotation: amp * s, svgOrigin: ORIG.legB, duration: st, ease: "sine.inOut"}, tt);
+    tl.to(`#${p}-legF`, {rotation: -amp * s, svgOrigin: ORIG.legF, duration: st, ease: "sine.inOut"}, tt);
+    if (!opt.noArmB) tl.to(`#${p}-armB`, {rotation: -amp * .7 * s, svgOrigin: ORIG.armB, duration: st, ease: "sine.inOut"}, tt);
+    if (!opt.noArmF) tl.to(`#${p}-armF`, {rotation: amp * .7 * s, svgOrigin: ORIG.armF, duration: st, ease: "sine.inOut"}, tt);
+    tl.to(`#${p}-bob`, {y: -6, duration: st / 2, ease: "sine.out"}, tt);
+    tl.to(`#${p}-bob`, {y: 0, duration: st / 2, ease: "sine.in"}, tt + st / 2);
+  }
+  const te = t + dur;
+  tl.to(`#${p}-legB`, {rotation: 0, svgOrigin: ORIG.legB, duration: .18}, te);
+  tl.to(`#${p}-legF`, {rotation: 0, svgOrigin: ORIG.legF, duration: .18}, te);
+  if (!opt.noArmB) tl.to(`#${p}-armB`, {rotation: 0, svgOrigin: ORIG.armB, duration: .25}, te);
+  if (!opt.noArmF) tl.to(`#${p}-armF`, {rotation: 0, svgOrigin: ORIG.armF, duration: .25}, te);
+  tl.to(`#${p}-bob`, {rotation: 0, svgOrigin: "0 0", duration: .3, ease: "back.out(2)"}, te);
+}
+function idle(p, t0, t1, amp = 1.4) { // breathing
+  let t = t0; while (t < t1 - 1) { tl.to(`#${p}-bob`, {scaleY: 1 - amp / 100, svgOrigin: "0 0", duration: .9, ease: "sine.inOut"}, t); tl.to(`#${p}-bob`, {scaleY: 1, svgOrigin: "0 0", duration: .9, ease: "sine.inOut"}, t + .9); t += 1.8; }
+}
+function holdTool(p, t, d = .4) { // forearm foreshortened in front of torso
+  R(p, "armF", 14, t, d); R(p, "foreF", {rotation: 76, scaleY: .42}, t, d); R(p, "handF", {scaleY: 1 / .42, scaleX: 1}, t, d);
+}
+function pop(sel, t, from = 0, d = .45, e = "back.out(2.2)") { tl.fromTo(sel, {scale: from, opacity: 0}, {scale: 1, opacity: 1, duration: d, ease: e}, t); }
+const CAM = {s: 1.1, x: -54, y: -68};
+const camApply = () => document.getElementById("cam").setAttribute("transform", `matrix(${CAM.s},0,0,${CAM.s},${CAM.x},${CAM.y})`);
+function camTo(s, x, y, t, d, e = "power3.inOut") { tl.to(CAM, {s, x, y, duration: d, ease: e, onUpdate: camApply}, t); }
+function capShow(i) {
+  const [a, b] = CAPS[i]; const el = `#cp${i}`;
+  tl.fromTo(el, {opacity: 0, y: 18, scale: .96}, {opacity: 1, y: 0, scale: 1, duration: .22, ease: "power2.out"}, a);
+  tl.fromTo(`${el} .mk`, {scaleX: 0}, {scaleX: 1, transformOrigin: "0% 50%", duration: .35, ease: "power2.out", stagger: .12}, a + .12);
+  tl.to(el, {opacity: 0, y: -10, duration: .16, ease: "power1.in"}, b - .16);
+}
+function hdIn(id, t) {
+  const words = `#${id} .w`;
+  tl.set(`#${id}`, {opacity: 1}, t);
+  tl.fromTo(`#${id} .chip`, {opacity: 0, x: -30}, {opacity: 1, x: 0, duration: .45, ease: "power3.out"}, t);
+  tl.fromTo(words, {yPercent: 110, rotation: 4}, {yPercent: 0, rotation: 0, duration: .6, stagger: .07, ease: "power4.out"}, t + .08);
+}
+function hdOut(id, t) { tl.to(`#${id} .w`, {yPercent: -110, duration: .35, stagger: .03, ease: "power2.in"}, t); tl.to(`#${id} .chip`, {opacity: 0, duration: .25}, t); tl.set(`#${id}`, {opacity: 0}, t + .5); }
+
+// ---- initial states
+gsap.set(["#hdA", "#hd0", "#hd1", "#hd2", "#hd3", "#hd4", "#hd5"], {opacity: 0});
+gsap.set(".cp", {opacity: 0});
+gsap.set("#car", {x: -330, y: GROUND});
+const BC = {s: 1.1, x: -54, y: -68};
+document.getElementById("cam").setAttribute("transform", "matrix(1.1,0,0,1.1,-54,-68)");
+const toS = (wx, wy) => [BC.x + BC.s * wx, BC.y + BC.s * wy]; gsap.set("#carbp", {x: CARX, y: GROUND, opacity: 0});
+gsap.set("#car2", {x: -700, y: GROUND});
+gsap.set("#drv", {x: 545, y: FRONT_Y, opacity: 0}); gsap.set("#gut", {x: 1260, y: FRONT_Y}); gsap.set("#gutb", {x: 1010, y: BACK_Y, opacity: 0});
+gsap.set(["#q1", "#q2", "#q3"], {opacity: 0});
+gsap.set("#q1", {x: 205, y: 748}); gsap.set("#q2", {x: 288, y: 706}); gsap.set("#q3", {x: 140, y: 722});
+gsap.set(".pin, .tag, .mtag, #exNote", {opacity: 0});
+gsap.set(["#logoWrap", "#e1", "#e2", "#url", "#cta", "#endSub"], {opacity: 0});
+gsap.set(".pol", {opacity: 0, x: 780, y: 1110});
+gsap.set(".dc", {opacity: 0});
+gsap.set(["#calc", "#xlab", ".xchip", ".tok", "#docWrap", "[id^=pc]"], {opacity: 0});
+gsap.set("#camHand", {x: 420, y: 520, opacity: 0});
+gsap.set("#meas path, #meas rect", {opacity: 0});
+gsap.set(["#bumm", "#lines"], {opacity: 0});
+gsap.set("#bumm", {x: 200, y: 1000}); gsap.set("#lines", {x: 20, y: 1060});
+gsap.set(".dp", {opacity: 0}); gsap.set(".db", {opacity: 0, x: 150, y: 990});
+gsap.set("#spk path", {opacity: 0});
+mouth("drv", "mSmile", 0); mouth("gut", "mSmile", 0); mouth("gutb", "mSmile", 0);
+gsap.set("#gut-tab", {opacity: 1}); gsap.set("#gutb-tab", {opacity: 1});
+gsap.set(["#gut-thumbB", "#gutb-thumbB"], {rotation: 120, svgOrigin: "-40 -122"});
+gsap.utils.toArray("[id$='-dmg']").forEach((el) => { if (el.id !== "car-dmg") gsap.set(el, {opacity: 1}); });
+
+/* ===== SCENE 1 — HOOK (0 – 6.5) ===== */
+// car drives in and brakes
+tl.fromTo("#car", {x: -330}, {x: CARX, duration: .95, ease: "power3.out"}, 0);
+tl.fromTo(["#car-wr", "#car-wf"], {rotation: 0}, {rotation: 760, svgOrigin: "0 0", duration: .95, ease: "power3.out"}, 0);
+tl.fromTo("#scnFar", {x: 40}, {x: 0, duration: .95, ease: "power3.out"}, 0);
+tl.fromTo("#scnMid", {x: 90}, {x: 0, duration: .95, ease: "power3.out"}, 0);
+tl.fromTo("#lane", {x: 260}, {x: 0, duration: .95, ease: "power3.out"}, 0);
+at("#car-body", {rotation: 1.6, svgOrigin: "505 -54", duration: .18, ease: "power2.out"}, .82);
+at("#car-body", {rotation: 0, svgOrigin: "505 -54", duration: .5, ease: "elastic.out(1,.45)"}, 1.0);
+// second car rolls in -> impact at 1.2
+tl.fromTo("#car2", {x: -700}, {x: 160, duration: .55, ease: "power1.in"}, .65);
+at("#car2", {x: 120, duration: .25, ease: "power2.out"}, 1.2);
+at("#car2", {x: -720, duration: .8, ease: "power2.in"}, 1.75);
+// impact
+at("#car", {x: CARX + 20, duration: .1, ease: "power2.out"}, 1.2);
+at("#car", {x: CARX + 6, duration: .5, ease: "elastic.out(1,.4)"}, 1.3);
+at("#car-body", {rotation: -1.8, svgOrigin: "130 -54", duration: .08}, 1.2);
+at("#car-body", {rotation: 0, svgOrigin: "130 -54", duration: .6, ease: "elastic.out(1.1,.35)"}, 1.28);
+set("#car-dmg", {opacity: 1}, 1.2);
+[10, -8, 6, -4, 2, 0].forEach((v, i) => at("#shake", {x: v, y: -v * .5, duration: .05, ease: "none"}, 1.2 + i * .05));
+ft("#bumm", {opacity: 0, scale: .2, rotation: -14}, {opacity: 1, scale: 1, rotation: -8, duration: .26, ease: "back.out(3)"}, 1.2);
+at("#bumm", {scale: 1.06, duration: .3, ease: "sine.inOut"}, 1.46);
+at("#bumm", {opacity: 0, scale: .6, duration: .22, ease: "power2.in"}, 1.95);
+ft("#lines", {opacity: 0, x: 40}, {opacity: .6, x: 0, duration: .15}, 1.2); at("#lines", {opacity: 0, duration: .3}, 1.45);
+// dust puffs + debris
+for (let i = 0; i < 4; i++) { const o = `${118 + [-10, 30, -30, 10][i]} ${1110 + [-10, -40, 20, 30][i]}`; ft(`#dp${i}`, {opacity: .9, scale: .2, svgOrigin: o}, {opacity: 0, scale: 1.6, svgOrigin: o, duration: .9 + i * .1, ease: "power2.out"}, 1.22); }
+for (let i = 0; i < 7; i++) {
+  const vx = -40 - rnd() * 130, vy = -60 - rnd() * 120, rot = rnd() * 540;
+  set(`#db${i}`, {opacity: 1, x: 150, y: 990 + i * 5, rotation: 0}, 1.2);
+  tl.to(`#db${i}`, {x: 150 + vx * .5, y: 990 + i * 5 + vy * .5, duration: .22, ease: "power1.out"}, 1.2);
+  tl.to(`#db${i}`, {x: 150 + vx, y: 1176, rotation: rot, duration: .38, ease: "power2.in"}, 1.42);
+  at(`#db${i}`, {opacity: 0, duration: .3}, 2.6);
+}
+// driver: door opens, steps out
+at("#car-door", {scaleX: .28, svgOrigin: "418 -110", duration: .32, ease: "power2.out"}, 1.85);
+ft("#drv", {opacity: 0, y: FRONT_Y - 30, x: 560}, {opacity: 1, y: FRONT_Y, x: 545, duration: .35, ease: "power2.out"}, 2.0);
+mouth("drv", "mO", 2.0); brows("drv", "worry", 2.0);
+at("#car-door", {scaleX: 1, svgOrigin: "418 -110", duration: .22, ease: "power3.in"}, 2.45);
+at("#car-body", {rotation: .6, svgOrigin: "320 -54", duration: .06}, 2.67); at("#car-body", {rotation: 0, svgOrigin: "320 -54", duration: .35, ease: "elastic.out(1,.4)"}, 2.73);
+walk("drv", 545, 230, 2.35, 1.05, {step: .26});
+// inspect pose
+look("drv", -8, 4, 3.4); R("drv", "head", -9, 3.4, .35);
+R("drv", "armB", 150, 3.45, .4, "back.out(1.4)"); R("drv", "foreB", 62, 3.5, .4, "back.out(1.4)");
+R("drv", "armF", -30, 3.45, .4); R("drv", "foreF", 75, 3.45, .4);
+[0, 1, 2].forEach((i) => { R("drv", "foreB", 56 + (i % 2) * 10, 3.95 + i * .16, .16, "sine.inOut"); });
+blink("drv", 3.2);
+// question marks
+[["#q1", 3.5, 0, -14], ["#q2", 3.66, 0, 10], ["#q3", 3.8, 0, -6]].forEach(([q, t, , r]) => { ft(q, {opacity: 0, scale: 0, rotation: r * 2, transformOrigin: "50% 80%"}, {opacity: 1, scale: 1, rotation: r, duration: .5, ease: "back.out(3)"}, t); });
+["#q1", "#q2", "#q3"].forEach((q, i) => { for (let k = 0; k < 4; k++) at(q, {y: "+=" + (k % 2 ? 8 : -8), rotation: (k % 2 ? 1 : -1) * 8, duration: .45, ease: "sine.inOut"}, 4.3 + i * .1 + k * .45); });
+// UND JETZT?
+set("#hdA", {opacity: 1}, 0); tl.fromTo("#hdA .ttl", {scale: 1.07, transformOrigin: "50% 50%"}, {scale: 1, duration: .7, ease: "power3.out", immediateRender: true}, 0); at("#hdA .ttl", {scale: .94, y: -6, transformOrigin: "50% 50%", duration: .12, ease: "power2.out"}, 1.2); at("#hdA .ttl", {scale: 1, y: 0, duration: .5, ease: "elastic.out(1,.4)"}, 1.32);
+hdOut("hdA", 3.6);
+hdIn("hd0", 3.95);
+tl.fromTo("#ul0", {scaleX: 0}, {scaleX: 1, transformOrigin: "0% 50%", duration: .5, ease: "power3.out"}, 4.3);
+at("#hd0 .ttl", {scale: 1.04, duration: .18, ease: "power2.out", transformOrigin: "50% 50%"}, 3.95); at("#hd0 .ttl", {scale: 1, duration: .3}, 4.13);
+blink("drv", 5.3);
+
+/* ===== SCENE 2 — GUTACHTER (6.3 – 13.2) ===== */
+idle("drv", 6.0, 8.4);
+holdTool("gut", 6.0, .01); holdTool("gutb", 6.0, .01);
+walk("gut", 1260, 840, 6.25, 1.05, {step: .3, noArmF: true});
+// driver turns to him
+look("drv", 8, 0, 6.9); R("drv", "head", 4, 6.9, .4); R("drv", "armB", 0, 6.95, .45); R("drv", "foreB", 0, 6.95, .45); R("drv", "armF", 0, 6.95, .45); R("drv", "foreF", 0, 6.95, .45);
+// question marks vanish one by one
+["#q3", "#q2", "#q1"].forEach((q, i) => at(q, {opacity: 0, scale: 0, transformOrigin: "50% 50%", duration: .25, ease: "back.in(2)"}, 7.55 + i * .12));
+// wave
+look("gut", -6, 0, 7.3); mouth("gut", "mGrin", 7.35);
+R("gut", "armB", 158, 7.35, .35, "back.out(1.6)"); R("gut", "foreB", -24, 7.35, .35);
+[0, 1, 2, 3].forEach((i) => R("gut", "foreB", i % 2 ? -24 : -48, 7.7 + i * .14, .14, "sine.inOut"));
+R("gut", "armB", 0, 8.3, .4); R("gut", "foreB", 0, 8.3, .4); mouth("gut", "mSmile", 8.3);
+brows("drv", "up", 7.6); mouth("drv", "mSmile", 7.7); blink("drv", 8.0);
+hdOut("hd0", 7.5); hdIn("hd1", 7.95);
+// driver steps out of the way (left)
+walk("drv", 230, -200, 8.6, 1.3, {step: .28});
+// gutachter walk-around: A right → depth swap → B behind car → depth swap → A to rear
+walk("gut", 840, 1010, 8.7, .55, {step: .28, noArmF: true});
+at("#gut", {y: BACK_Y, scale: .9, svgOrigin: "0 0", duration: .3, ease: "power1.inOut"}, 9.25);
+set("#gut", {opacity: 0}, 9.55); set("#gutb", {opacity: 1, x: 1010}, 9.55);
+look("gutb", -7, -2, 9.55, .01);
+walk("gutb", 1010, 40, 9.55, 1.6, {step: .3, noArmF: true});
+set("#gutb", {opacity: 0}, 11.15); set("#gut", {opacity: 1, x: 40}, 11.15);
+at("#gut", {y: FRONT_Y, scale: 1, svgOrigin: "0 0", duration: .3, ease: "power1.inOut"}, 11.15);
+walk("gut", 40, 330, 11.45, .8, {step: .27, noArmF: true});
+// orbit + scan
+set("#orbitG", {opacity: 1}, 8.6);
+const orbitLen = 2 * Math.PI * Math.sqrt((520 * 520 + 96 * 96) / 2);
+gsap.set("#orbit", {attr: {"stroke-dasharray": `0 ${orbitLen}`}});
+tl.fromTo("#orbit", {attr: {"stroke-dasharray": `0 ${orbitLen}`}}, {attr: {"stroke-dasharray": `${orbitLen} 0`}, duration: 3.6, ease: "none"}, 8.65);
+const orb = {a: 0};
+tl.fromTo(orb, {a: 0}, {a: 1, duration: 3.6, ease: "none", onUpdate: () => { const th = -orb.a * Math.PI * 2; gsap.set("#orbDot", {attr: {cx: 540 + 520 * Math.cos(th), cy: 1196 + 96 * Math.sin(th)}}); }}, 8.65);
+at("#orbitG", {opacity: 0, duration: .5}, 12.6);
+set("#scan", {opacity: 1}, 9.6);
+tl.fromTo("#beam", {attr: {x: 1000}}, {attr: {x: 60}, duration: 1.6, ease: "sine.inOut"}, 9.6);
+at("#scan", {opacity: 0, duration: .3}, 11.2);
+tl.fromTo("#brk", {opacity: 0, scale: 1.08, svgOrigin: "540 1020"}, {opacity: 1, scale: 1, svgOrigin: "540 1020", duration: .4, ease: "back.out(2)"}, 9.7);
+at("#brk", {opacity: 0, duration: .3}, 12.4);
+// gutachter at rear: looks at bumper, tablet → camera
+look("gut", -8, 3, 12.3); R("gut", "head", -6, 12.3, .3);
+set("#gut-tab", {opacity: 0}, 12.75); set("#gut-cam", {opacity: 1}, 12.75);
+at("#gut-tool", {y: -52, duration: .3, ease: "back.out(2)"}, 12.75); R("gut", "foreF", {rotation: 70, scaleY: .3}, 12.75, .3);
+idle("gut", 12.4, 13.4);
+
+/* ===== SCENE 3 — DOKUMENTIEREN (13.2 – 21.6) ===== */
+hdOut("hd1", 13.0); hdIn("hd2", 13.45);
+at("#gut", {opacity: 0, duration: .25}, 13.2);
+camTo(2.0, 22, -1073, 13.2, .95);
+set("#camHand", {opacity: 1}, 13.75);
+ft("#camHand", {x: 420, y: 520, rotation: 8, svgOrigin: "1000 1300"}, {x: 0, y: 0, rotation: 0, svgOrigin: "1000 1300", duration: .7, ease: "back.out(1.3)"}, 13.75);
+// shutter 1 → flash → photo
+const SH = [14.6, 15.5, 16.25, 17.0];
+SH.forEach((t, i) => {
+  at("#thumb", {y: 8, duration: .06, ease: "power2.in"}, t - .06); at("#thumb", {y: 0, duration: .12}, t + .04);
+  at("#camHand", {rotation: -1.2, svgOrigin: "1000 1300", duration: .05}, t); at("#camHand", {rotation: 0, svgOrigin: "1000 1300", duration: .3, ease: "elastic.out(1,.4)"}, t + .05);
+  ft("#flashWin", {attr: {fill: "#FFFFFF"}}, {attr: {fill: "#E9C46A"}, duration: .3}, t);
+  ft("#flash", {opacity: i === 0 ? .95 : .45}, {opacity: 0, duration: i === 0 ? .45 : .28, ease: "power2.out"}, t);
+});
+// polaroids fly out of camera to the stack
+const POLX = [748, 768, 740, 760], POLY = [560, 574, 590, 604], POLR = [-7, 5, -3, 8];
+SH.forEach((t, i) => {
+  tl.fromTo(`#pol${i}`, {opacity: 0, x: 780, y: 1110, scale: .25, rotation: 0}, {opacity: 1, x: POLX[i], y: POLY[i], scale: .82, rotation: POLR[i], duration: .62, ease: "back.out(1.4)"}, t + .08);
+});
+// pins + tags
+const PT = [15.55, 16.3, 17.05, 17.8];
+PINS.forEach((p, i) => { pop(`#pin${p.n}`, PT[i] - .05, 0, .45); ft(`#tag${p.n}`, {opacity: 0, x: -14}, {opacity: 1, x: 0, duration: .35}, PT[i] + .1); });
+// measurements
+const dl = (sel, t, d = .5) => { const el = document.querySelector(sel); const L = el.getTotalLength ? el.getTotalLength() : 400; tl.fromTo(sel, {opacity: 1, strokeDasharray: L, strokeDashoffset: L}, {strokeDashoffset: 0, duration: d, ease: "power2.inOut"}, t); };
+set("#meas", {opacity: 1}, 18.3);
+dl("#mA1", 18.35, .15); dl("#mA2", 18.35, .15); dl("#mA", 18.45, .5); ft("#mtA", {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: .3}, 18.85);
+dl("#mB1", 19.0, .15); dl("#mB2", 19.0, .15); dl("#mB", 19.1, .5); ft("#mtB", {opacity: 0, y: 10}, {opacity: 1, y: 0, duration: .3}, 19.5);
+tl.fromTo("#mC", {opacity: 0, scale: 1.12, svgOrigin: "328 1094"}, {opacity: 1, scale: 1, svgOrigin: "328 1094", duration: .4, ease: "back.out(2)"}, 19.7);
+ft("#exNote", {opacity: 0}, {opacity: 1, duration: .4}, 15.6);
+// scene 3 out
+at(".pin, .tag, .mtag, #exNote", {opacity: 0, duration: .25}, 21.25);
+at("#meas", {opacity: 0, duration: .25}, 21.25);
+at("#camHand", {x: 420, y: 520, rotation: 10, svgOrigin: "1000 1300", duration: .5, ease: "power2.in"}, 21.1);
+
+/* ===== SCENE 4 — FAHRZEUG PRÜFEN (21.6 – 30.2) ===== */
+hdOut("hd2", 21.6); hdIn("hd3", 22.0);
+camTo(.8, 108, -50, 21.5, 1.0);
+at("#scn", {opacity: 0, duration: .5}, 21.5);
+set(["#drv", "#gut", "#gutb"], {opacity: 0}, 21.5);
+// photo stack -> merges -> morphs into "Modell" card
+for (let i = 0; i < 4; i++) at(`#pol${i}`, {x: 140, y: 900, rotation: 0, scale: .6, duration: .45, ease: "power3.inOut"}, 21.75 + i * .04);
+for (let i = 1; i < 4; i++) set(`#pol${i}`, {opacity: 0}, 22.25);
+at("#pol0", {x: 100, y: 960, width: 410, height: 108, scale: 1, padding: 0, borderRadius: 22, transformOrigin: "0% 0%", duration: .5, ease: "power3.inOut"}, 22.25);
+at("#pol0 .ph, #pol0 .cap", {opacity: 0, duration: .2}, 22.25);
+set("#dcM", {opacity: 1}, 22.72); set("#pol0", {opacity: 0}, 22.75);
+ft("#dcM .ct", {opacity: 0, x: -16}, {opacity: 1, x: 0, duration: .35}, 22.75);
+ft("#dcM .ic", {scale: 0}, {scale: 1, duration: .4, ease: "back.out(2.5)"}, 22.72);
+// other cards: dots on car → morph
+const SRC = {dcB: [648, 702], dcK: [605, 682], dcZ: [518, 764], dcA: [740, 836]};
+const CT = {dcB: 23.5, dcK: 24.4, dcZ: 25.6, dcA: 26.6};
+const conn = $("#conn"), dots = $("#srcDots");
+DC.slice(1).forEach((d) => {
+  const [x, y] = SRC[d.id], t = CT[d.id];
+  addSVG(dots, `<circle id="sd_${d.id}" cx="${x}" cy="${y}" r="14" fill="${C.gold}"/><circle id="sr_${d.id}" cx="${x}" cy="${y}" r="14" fill="none" stroke="${C.gold}" stroke-width="4"/>`);
+  const tx = d.l + 40, ty = d.t + 54;
+  addSVG(conn, `<path id="cn_${d.id}" d="M${x},${y} C${x},${(y + ty) / 2} ${tx},${(y + ty) / 2} ${tx},${ty}"/>`);
+  gsap.set([`#sd_${d.id}`, `#sr_${d.id}`], {opacity: 0});
+  pop(`#sd_${d.id}`, t - .5, 0, .3);
+  tl.fromTo(`#sr_${d.id}`, {opacity: 1, scale: 1, svgOrigin: `${x} ${y}`}, {opacity: 0, scale: 3, svgOrigin: `${x} ${y}`, duration: .6, ease: "power2.out"}, t - .4);
+  set(`#${d.id}`, {opacity: 1}, t);
+  tl.fromTo(`#${d.id}`, {x: x - 14 - d.l, y: y - 14 - d.t, width: 28, height: 28, borderRadius: 14}, {x: 0, y: 0, width: d.w, height: 108, borderRadius: 22, duration: .6, ease: "power3.inOut"}, t);
+  at(`#sd_${d.id}`, {opacity: 0, duration: .15}, t);
+  tl.fromTo(`#${d.id} .ic`, {scale: 0}, {scale: 1, duration: .4, ease: "back.out(2.5)"}, t + .45);
+  ft(`#${d.id} .ct`, {opacity: 0, x: -16}, {opacity: 1, x: 0, duration: .35}, t + .5);
+});
+set("#conn", {opacity: .8}, 23.0);
+DC.slice(1).forEach((d) => { dl(`#cn_${d.id}`, CT[d.id] - .45, .45); at(`#cn_${d.id}`, {opacity: 0, duration: .3}, CT[d.id] + .45); });
+at("#conn", {opacity: 0, duration: .5}, 28.6);
+// km counter
+const km = {v: 0}; tl.fromTo(km, {v: 0}, {v: 68420, duration: 1.4, ease: "power2.out", onUpdate: () => { $("#kmv").textContent = Math.round(km.v).toLocaleString("de-DE"); }}, CT.dcK + .5);
+// wheels turn a bit (car "checked"), subtle bounce
+tl.to(["#car-wr", "#car-wf"], {rotation: "+=120", svgOrigin: "0 0", duration: 1.2, ease: "power2.inOut"}, 26.7);
+at("#car-body", {y: -4, duration: .2, ease: "power2.out"}, 23.4); at("#car-body", {y: 0, duration: .5, ease: "bounce.out"}, 23.6);
+
+/* ===== SCENE 5 — BERECHNUNG (30.0 – 42.2) ===== */
+hdOut("hd3", 30.0); hdIn("hd4", 30.45);
+at("#bgDark", {opacity: 1, duration: .8, ease: "power2.inOut"}, 30.0);
+at("#grid", {opacity: 1, duration: 1.0}, 30.3);
+at("#hl", {color: "#F4F1EA", duration: .6}, 30.1);
+camTo(.62, 205.2, 92.2, 30.0, .9);
+at("#car", {opacity: 0, duration: .6}, 30.3); ft("#carbp", {opacity: 0}, {opacity: 1, duration: .6}, 30.25);
+tl.fromTo("#carbp-hot", {opacity: 0}, {opacity: 1, duration: .3, repeat: 4, yoyo: true, ease: "sine.inOut"}, 31.6);
+// cards collapse → flip → calc
+DC.forEach((d, i) => at(`#${d.id}`, {x: 270 - d.l, y: 1040 - d.t, width: 540, height: 108, duration: .45, ease: "power3.inOut"}, 30.15 + i * .05));
+at(".dc .ct, .dc .ic", {opacity: 0, duration: .2}, 30.15);
+at(".dc", {rotationX: 90, transformPerspective: 900, duration: .25, ease: "power2.in"}, 30.65);
+set(".dc", {opacity: 0}, 30.9);
+tl.fromTo("#calc", {opacity: 1, rotationX: -90, transformPerspective: 1400, scaleY: .3, transformOrigin: "50% 50%"}, {rotationX: 0, scaleY: 1, duration: .55, ease: "back.out(1.3)"}, 30.9);
+ROWS.forEach((r, i) => {
+  const t = 31.45 + i * .62;
+  ft(`#row${i}`, {opacity: 0, x: -30}, {opacity: 1, x: 0, duration: .35}, t);
+  tl.fromTo(`#bf${i}`, {scaleX: 0}, {scaleX: 1, transformOrigin: "0% 50%", duration: .55, ease: "power2.out"}, t + .15);
+  pop(`#ok${i}`, t + .55, 0, .3);
+});
+ft("#sum", {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: .4}, 34.1);
+[0, 1, 2].forEach((i) => tl.fromTo(`#sg${i}`, {scaleX: 0}, {scaleX: 1, transformOrigin: "0% 50%", duration: .4, ease: "power3.out"}, 34.45 + i * .3));
+pop("#okS", 35.45, 0, .4);
+// extra values
+camTo(.5, 30, 213.7, 36.3, .8);
+ft("#xlab", {opacity: 0, x: -10}, {opacity: 1, x: 0, duration: .3}, 36.9);
+[0, 1, 2].forEach((i) => { tl.fromTo(`#x${i}`, {opacity: 0, x: 40, scale: .9}, {opacity: 1, x: 0, scale: 1, duration: .45, ease: "back.out(2)"}, 37.2 + i * .45); });
+// calc lines become floating tokens
+at(["#calc", "#xlab", ".xchip"], {opacity: 0, scale: .9, duration: .35, ease: "power2.in"}, 41.3);
+at("#carbp", {opacity: 0, duration: .35}, 41.3);
+
+/* ===== SCENE 6 — DAS GUTACHTEN (41.4 – 50.4) ===== */
+hdOut("hd4", 41.4); hdIn("hd5", 42.05);
+const TK = [[120, 640, -8], [700, 620, 6], [150, 1010, 5], [660, 960, -5]];
+TK.forEach(([x, y, r], i) => {
+  tl.fromTo(`#tk${i}`, {opacity: 0, scale: .4, rotation: r * 2}, {opacity: 1, scale: 1, rotation: r, duration: .45, ease: "back.out(2)"}, 41.45 + i * .08);
+  at(`#tk${i}`, {y: (i % 2 ? 14 : -14), rotation: -r * .5, duration: .85, ease: "sine.inOut"}, 41.9);
+  at(`#tk${i}`, {x: 440 - x, y: 900 - y, scale: .25, rotation: 0, opacity: 0, duration: .45, ease: "power3.in"}, 42.75 + i * .03);
+});
+at("#bgDark", {opacity: 0, duration: .35}, 43.0); at("#grid", {opacity: 0, duration: .3}, 43.0);
+at("#hl", {color: "#07306E", duration: .3}, 43.0);
+ft("#flash", {opacity: .85}, {opacity: 0, duration: .5}, 43.05);
+set("#docWrap", {opacity: 1}, 43.1);
+tl.fromTo("#docWrap", {scale: .2, rotation: -6, y: 40}, {scale: .92, rotation: 0, y: 0, duration: .6, ease: "back.out(1.6)"}, 43.1);
+// page flips
+const FL = [44.5, 45.45, 46.4, 47.35];
+set("#pc0", {opacity: 1}, 43.5); ft("#pc0", {scale: 0}, {scale: 1, duration: .35, ease: "back.out(2)"}, 43.5);
+gsap.set(["#pg1", "#pg2", "#pg3", "#pg4"], {opacity: 0});
+FL.forEach((t, i) => {
+  set(`#pg${i + 1}`, {opacity: 1}, t);
+  tl.to(`#pg${i}`, {rotationY: -165, transformOrigin: "0% 50%", duration: .6, ease: "power2.inOut"}, t);
+  set(`#pg${i}`, {opacity: 0}, t + .6);
+  set(`#pc${i}`, {opacity: 0}, t + .25); set(`#pc${i + 1}`, {opacity: 1}, t + .25);
+  ft(`#pc${i + 1}`, {scale: .6}, {scale: 1, duration: .3, ease: "back.out(2)"}, t + .25);
+});
+set("#pc4", {opacity: 0}, 48.9);
+// doc shrinks back to cover and into the phone
+set("#pg4", {opacity: 0}, 48.75);
+FL.slice().reverse().forEach((t, j) => { const i = 3 - j; set(`#pg${i}`, {opacity: 1}, 48.5 + j * .06); if (i > 0) set(`#pg${i}`, {opacity: 0}, 48.85 + j * .06); at(`#pg${i}`, {rotationY: 0, duration: .3, ease: "power2.out"}, 48.5 + j * .06); });
+hdOut("hd5", 49.1);
+
+/* ===== SCENE 7 — ZURÜCK ZUM FAHRER & YAKÜ (49.6 – 60) ===== */
+// world back to normal framing
+const C7 = {s: 1.5, x: -277.5, y: -645};
+camTo(C7.s, C7.x, C7.y, 49.3, .01);
+const toS7 = (wx, wy) => [C7.x + C7.s * wx, C7.y + C7.s * wy];
+set("#car", {opacity: 1, x: CARX}, 49.3); set("#scn", {opacity: 1}, 49.3);
+tl.fromTo(["#scn", "#car"], {opacity: 0}, {opacity: 1, duration: .5}, 49.5);
+// characters
+set("#drv", {x: 330, y: FRONT_Y, opacity: 1}, 49.3); set("#gut", {x: 760, y: FRONT_Y, opacity: 1, scale: 1}, 49.3);
+R("drv", "head", 0, 49.3, .01); look("drv", 0, 4, 49.3, .01);
+R("drv", "armB", -14, 49.3, .01); R("drv", "foreB", {rotation: -76, scaleY: .42}, 49.3, .01); R("drv", "handB", {scaleY: 1 / .42}, 49.3, .01);
+holdTool("drv", 49.3, .01); set("#drv-phone", {opacity: 1}, 49.3);
+R("drv", "head", 5, 49.3, .01);
+set("#gut-cam", {opacity: 0}, 49.3); set("#gut-tab", {opacity: 1}, 49.3); set("#gut-tool", {y: 0}, 49.3); holdTool("gut", 49.3, .01);
+look("gut", -6, 0, 49.3, .01); R("gut", "head", -4, 49.3, .01);
+tl.fromTo(["#drv", "#gut"], {opacity: 0}, {opacity: 1, duration: .4}, 49.5);
+// document flies into phone (phone screen ≈ world 330 + S*0 , FRONT_Y + S*-193)
+const PH = toS7(330, FRONT_Y - 193 * S);
+at("#docWrap", {x: PH[0] - 540, y: PH[1] - 972, scale: .07 * C7.s, duration: .6, ease: "power3.in"}, 49.45);
+at("#docWrap", {opacity: 0, duration: .12}, 49.98);
+ft("#drv-phone", {scale: 1}, {scale: 1.15, svgOrigin: "0 -193", duration: .12, yoyo: true, repeat: 1}, 50.0);
+// reaction: reads → looks up → relieved smile
+idle("drv", 50.2, 54.2, 1.2); idle("gut", 50.2, 54.2, 1);
+mouth("drv", "mO", 50.1); brows("drv", "up", 50.1);
+look("drv", 2, -2, 51.0, .3); R("drv", "head", -2, 51.0, .35);
+mouth("drv", "mGrin", 51.1); set("#drv-eyes", {opacity: 0}, 51.15); set("#drv-eyesH", {opacity: 1}, 51.15);
+at("#drv-bob", {y: 6, duration: .35, ease: "power2.out"}, 51.2); at("#drv-bob", {y: 0, duration: .6, ease: "elastic.out(1,.5)"}, 51.55); // exhale
+R("drv", "head", 4, 51.6, .4);
+set("#drv-eyes", {opacity: 1}, 52.4); set("#drv-eyesH", {opacity: 0}, 52.4); mouth("drv", "mSmile", 52.4); look("drv", 7, 0, 52.4);
+blink("drv", 53.1);
+// gutachter nods + thumbs up
+R("gut", "head", 6, 51.3, .18); R("gut", "head", -2, 51.48, .2); R("gut", "head", 5, 51.68, .18); R("gut", "head", -4, 51.86, .25);
+mouth("gut", "mGrin", 51.3);
+R("gut", "armB", 30, 51.9, .35, "back.out(1.6)"); R("gut", "foreB", -150, 51.9, .35, "back.out(1.6)");
+set("#gut-thumbB", {opacity: 1}, 52.05);
+R("gut", "foreB", -140, 52.3, .15); R("gut", "foreB", -150, 52.45, .2);
+// sparkles
+[[250, 800], [410, 760], [545, 840], [690, 770], [845, 805]].forEach(([x, y], i) => { set(`#sp${i}`, {x, y}, 50); tl.fromTo(`#sp${i}`, {opacity: 0, scale: 0, rotation: 0, transformOrigin: "50% 50%"}, {opacity: 1, scale: 1, rotation: 90, duration: .4, ease: "back.out(3)"}, 51.25 + i * .09); at(`#sp${i}`, {opacity: 0, scale: 0, duration: .3}, 52.6 + i * .06); });
+// transition: phone screen expands into end card
+set("#end", {opacity: 1}, 54.15);
+const [phx, phy] = toS7(330 - 14 * S, FRONT_Y - 218 * S);
+tl.fromTo("#endPanel", {x: phx, y: phy, width: 28 * S * C7.s, height: 50 * S * C7.s, borderRadius: 12}, {x: 0, y: 0, width: 1080, height: 1920, borderRadius: 0, duration: .65, ease: "power4.inOut"}, 54.15);
+// end card content
+tl.fromTo("#logoWrap", {opacity: 0, scale: .92, y: 30, clipPath: "inset(0% 100% 0% 0%)"}, {opacity: 1, scale: 1, y: 0, clipPath: "inset(0% 0% 0% 0%)", duration: .9, ease: "power3.inOut"}, 54.75);
+ft("#e1", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: .5, ease: "power3.out"}, 55.55);
+ft("#e2", {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: .5, ease: "power3.out"}, 56.25);
+ft("#url", {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: .45}, 57.0);
+ft("#cta", {opacity: 0, scale: .7}, {opacity: 1, scale: 1, duration: .55, ease: "back.out(2)"}, 57.3);
+ft("#endSub", {opacity: 0}, {opacity: 1, duration: .5}, 57.7);
+[58.3, 59.1].forEach((t) => { at("#cta", {scale: 1.05, duration: .25, ease: "sine.out"}, t); at("#cta", {scale: 1, duration: .35, ease: "sine.in"}, t + .25); });
+at("#cta svg", {x: 8, duration: .3, ease: "sine.inOut", yoyo: true, repeat: 3}, 58.0);
+
+/* ===== CAPTIONS ===== */
+CAPS.forEach((c, i) => capShow(i));
+
+/* ===== blinks across the film ===== */
+[9.0, 12.0, 13.0].forEach((t) => blink("gut", t)); [10.4].forEach((t) => blink("gutb", t)); [50.6, 53.6].forEach((t) => blink("gut", t));
+
+tl.set({}, {}, 60);
+window.__timelines["main"] = tl;
+})();
+</script>
+</body>
+</html>

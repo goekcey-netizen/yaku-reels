@@ -1,0 +1,8 @@
+{
+  "name": "yaku-reel",
+  "private": true,
+  "dependencies": {
+    "hyperframes": "0.8.111",
+    "gsap": "^3.13.0"
+  }
+}

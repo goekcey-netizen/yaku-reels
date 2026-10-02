@@ -1,0 +1,99 @@
+{
+ "note": "start = geplanter Einsatz (s), maxlen = Zeitfenster (s), captions = Indizes der CAPS-Einträge in index.html, die zu diesem Satz gehören",
+ "takes": [
+  {
+   "take": "VO01",
+   "start": 1.45,
+   "maxlen": 4.75,
+   "text": "Unfall gehabt – und jetzt kommt ein Gutachter. Aber … was macht der eigentlich?",
+   "captions": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "take": "VO02",
+   "start": 7.2,
+   "maxlen": 5.5,
+   "text": "Zuerst schaut er sich dein Fahrzeug und den Schaden ganz genau an.",
+   "captions": [
+    3,
+    4
+   ]
+  },
+  {
+   "take": "VO03",
+   "start": 14.3,
+   "maxlen": 6.1,
+   "text": "Beschädigte Teile werden fotografiert, vermessen – und genau dokumentiert.",
+   "captions": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "take": "VO04",
+   "start": 22.3,
+   "maxlen": 7.1,
+   "text": "Auch Fahrzeugdaten und Laufleistung, Ausstattung und Zustand spielen bei der Bewertung eine Rolle.",
+   "captions": [
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "take": "VO05",
+   "start": 30.9,
+   "maxlen": 5.3,
+   "text": "Dann wird berechnet: Welche Reparaturen sind nötig? Welche Kosten entstehen?",
+   "captions": [
+    11,
+    12,
+    13
+   ]
+  },
+  {
+   "take": "VO06",
+   "start": 36.5,
+   "maxlen": 4.8,
+   "text": "Je nach Schaden zählen auch weitere Werte fürs Gutachten.",
+   "captions": [
+    14,
+    15
+   ]
+  },
+  {
+   "take": "VO07",
+   "start": 42.5,
+   "maxlen": 7.6,
+   "text": "Am Ende kommt alles zusammen: Fotos, Fahrzeugdaten, Schadenbeschreibung und Kalkulation – in einem vollständigen Gutachten.",
+   "captions": [
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "take": "VO08",
+   "start": 50.6,
+   "maxlen": 4.4,
+   "text": "Sauber dokumentiert. Nachvollziehbar bewertet. Verständlich erklärt.",
+   "captions": [
+    20,
+    21,
+    22
+   ]
+  },
+  {
+   "take": "VO09",
+   "start": 55.4,
+   "maxlen": 4.2,
+   "text": "Jakü Gutachten. Ihr Schaden. Klar bewertet.",
+   "captions": []
+  }
+ ]
+}

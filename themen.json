@@ -1,0 +1,245 @@
+{
+ "hinweis": "Die tägliche Routine nimmt das erste Thema mit status 'offen', setzt es danach auf 'eingeplant' + Datum. Reihenfolge/Themen jederzeit änderbar.",
+ "themen": [
+  {
+   "nr": 1,
+   "id": "was-macht-ein-gutachter",
+   "titel": "Was macht ein Kfz-Gutachter eigentlich?",
+   "inhalt": "Begutachtung → Dokumentation → Fahrzeugdaten → Kalkulation → Gutachten",
+   "status": "veroeffentlicht",
+   "datum": "2026-10-02"
+  },
+  {
+   "nr": 2,
+   "id": "wer-zahlt-das-gutachten",
+   "titel": "Wer bezahlt das Gutachten nach einem Unfall?",
+   "inhalt": "Unverschuldet vs. selbst verursacht, Haftpflicht der Gegenseite, Bagatellgrenze (vorsichtig formulieren)",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 3,
+   "id": "freie-gutachterwahl",
+   "titel": "Darf ich meinen Gutachter selbst aussuchen?",
+   "inhalt": "Freie Wahl des Sachverständigen bei unverschuldetem Unfall, Versicherer-Gutachter vs. unabhängiger Gutachter",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 4,
+   "id": "gutachten-vs-kostenvoranschlag",
+   "titel": "Gutachten oder Kostenvoranschlag – was ist der Unterschied?",
+   "inhalt": "Umfang, Wertminderung, Beweiskraft, wann was sinnvoll ist",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 5,
+   "id": "wertminderung",
+   "titel": "Merkantile Wertminderung einfach erklärt",
+   "inhalt": "Warum ein Unfallwagen weniger wert ist, wer sie ermittelt",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 6,
+   "id": "wiederbeschaffungswert-restwert",
+   "titel": "Wiederbeschaffungswert und Restwert",
+   "inhalt": "Begriffe, wofür sie im Gutachten stehen",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 7,
+   "id": "totalschaden",
+   "titel": "Totalschaden: technisch vs. wirtschaftlich",
+   "inhalt": "Wann Reparatur sich nicht mehr lohnt, Rolle von WBW/Restwert",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 8,
+   "id": "130-prozent-regel",
+   "titel": "Die 130-%-Regel erklärt",
+   "inhalt": "Reparatur trotz höherer Kosten – Voraussetzungen vorsichtig darstellen",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 9,
+   "id": "nutzungsausfall",
+   "titel": "Nutzungsausfall – was ist das?",
+   "inhalt": "Entschädigung für die Zeit ohne Auto, Abgrenzung Mietwagen",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 10,
+   "id": "unfall-checkliste",
+   "titel": "Unfall gehabt? Die ersten 5 Schritte",
+   "inhalt": "Absichern, Polizei bei Bedarf, Fotos, Daten austauschen, Gutachter",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 11,
+   "id": "unfallfotos",
+   "titel": "So fotografierst du einen Unfallschaden richtig",
+   "inhalt": "Übersicht, Nahaufnahmen, Maßstab, Umgebung, Kennzeichen",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 12,
+   "id": "unfallbericht",
+   "titel": "Der Europäische Unfallbericht",
+   "inhalt": "Wozu er dient, was man beachten sollte",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 13,
+   "id": "parkschaden",
+   "titel": "Parkschaden – und keiner war's?",
+   "inhalt": "Fahrerflucht, Polizei, Zeugen, Fotos, Kasko vs. Haftpflicht",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 14,
+   "id": "wildunfall",
+   "titel": "Wildunfall – was jetzt?",
+   "inhalt": "Absichern, Polizei/Jäger, Wildunfallbescheinigung, Teilkasko",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 15,
+   "id": "hagelschaden",
+   "titel": "Hagelschaden am Auto",
+   "inhalt": "Dokumentation, Teilkasko, Begutachtung",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 16,
+   "id": "fiktive-abrechnung",
+   "titel": "Reparieren oder auszahlen lassen?",
+   "inhalt": "Fiktive vs. konkrete Abrechnung – neutral erklären",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 17,
+   "id": "haftpflicht-teilkasko-vollkasko",
+   "titel": "Haftpflicht, Teilkasko, Vollkasko – wer zahlt was?",
+   "inhalt": "Überblick der drei Versicherungsarten",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 18,
+   "id": "vorschaeden",
+   "titel": "Warum Vorschäden im Gutachten wichtig sind",
+   "inhalt": "Abgrenzung alt/neu, Einfluss auf Bewertung",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 19,
+   "id": "leasing-unfall",
+   "titel": "Unfall mit dem Leasingfahrzeug",
+   "inhalt": "Leasinggeber informieren, Gutachten, Wertminderung",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 20,
+   "id": "reparaturdauer",
+   "titel": "Reparaturdauer und Wiederbeschaffungsdauer",
+   "inhalt": "Was die Angaben im Gutachten bedeuten",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 21,
+   "id": "assistenzsysteme",
+   "titel": "Versteckte Schäden: Sensoren und Assistenzsysteme",
+   "inhalt": "Kalibrierung nach Unfall, warum Laien das nicht sehen",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 22,
+   "id": "kratzer-lackschaden",
+   "titel": "Kratzer und Lackschaden – Gutachten nötig?",
+   "inhalt": "Smart Repair, Bagatellschaden, wann ein Gutachter hilft",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 23,
+   "id": "ablauf-yaku",
+   "titel": "So läuft ein Termin mit YAKÜ ab",
+   "inhalt": "Schaden melden → Vor-Ort-Termin → Gutachten (Infos von yaku-gutachten.de)",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 24,
+   "id": "unkostenpauschale",
+   "titel": "Was ist die Unkostenpauschale?",
+   "inhalt": "Pauschale für Telefon, Porto etc. – vorsichtig formulieren",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 25,
+   "id": "teilschuld",
+   "titel": "Teilschuld – was heißt das für mich?",
+   "inhalt": "Haftungsquote, Auswirkungen grob erklärt",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 26,
+   "id": "mietwagen",
+   "titel": "Mietwagen nach dem Unfall",
+   "inhalt": "Wann möglich, worauf achten, Alternative Nutzungsausfall",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 27,
+   "id": "fahrzeugbewertung",
+   "titel": "Fahrzeugbewertung: Was ist mein Auto wert?",
+   "inhalt": "Wertgutachten jenseits von Unfällen (Verkauf, Versicherung)",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 28,
+   "id": "motorrad-unfall",
+   "titel": "Motorradunfall – Besonderheiten beim Gutachten",
+   "inhalt": "Schutzkleidung, Rahmen, versteckte Schäden",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 29,
+   "id": "e-auto-unfall",
+   "titel": "Unfall mit dem E-Auto",
+   "inhalt": "Hochvoltbatterie, Sicherheit, spezialisierte Prüfung",
+   "status": "offen",
+   "datum": null
+  },
+  {
+   "nr": 30,
+   "id": "unfall-ausland",
+   "titel": "Unfall im Ausland",
+   "inhalt": "Grüne Karte, Unfallbericht, Regulierung über Schadenregulierungsbeauftragten",
+   "status": "offen",
+   "datum": null
+  }
+ ]
+}

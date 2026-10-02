@@ -1,0 +1,32 @@
+# Holt eine Audiodatei (z. B. die ElevenLabs-Sprecherspur) von einer signierten URL
+# und legt sie als Asset am Release "audio-inbox" ab. Wird von der täglichen Routine per API ausgelöst.
+name: fetch-audio
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "Download-URL der Audiodatei"
+        required: true
+      name:
+        description: "Dateiname des Assets, z. B. 2026-10-03_voice.mp3"
+        required: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download
+        env:
+          URL: ${{ inputs.url }}
+          NAME: ${{ inputs.name }}
+        run: |
+          curl -fsSL --retry 3 "$URL" -o "$NAME"
+          ls -la "$NAME"
+      - name: Upload to release audio-inbox
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NAME: ${{ inputs.name }}
+        run: |
+          gh release view audio-inbox -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || gh release create audio-inbox -R "$GITHUB_REPOSITORY" --title "Audio-Eingang" --notes "Automatisch abgeholte Sprecherspuren"
+          gh release upload audio-inbox "$NAME" -R "$GITHUB_REPOSITORY" --clobber

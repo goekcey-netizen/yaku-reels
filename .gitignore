@@ -1,0 +1,6 @@
+node_modules/
+**/out/
+**/voice/
+**/audio/*.wav
+*.mp4
+snapshots/
