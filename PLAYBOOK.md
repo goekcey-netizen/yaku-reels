@@ -21,7 +21,7 @@ Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.h
 | Claim | „Ihr Schaden. Klar bewertet.“ |
 | Stimme | ElevenLabs, Voice „Lennard – Warm & Trustworthy“ `HNYELfQMgCeL9N0RGyxo`, Modell `eleven_multilingual_v2` |
 | Metricool | Brand `yaku.gutachten`, blogId `7155086`, Zeitzone Europe/Berlin, nur Instagram |
-| GitHub | `goekcey-netizen/yaku-reels` (öffentlich) – Vorlage, Projekte, Releases mit fertigen Videos |
+| GitHub | `goekcey-netizen/yaku-reels` (öffentlich) – `main`: Vorlage, Projekte, Themenplan · `media`: fertige Videos (öffentliche raw-URLs, letzte 14 Tage) |
 | Safe Area | Text nur in y 250–1480 px, x 60–960 px (Instagram-UI oben/unten/rechts) |
 
 ## 1. Inhaltliche Regeln (nicht verhandelbar)
@@ -38,6 +38,12 @@ Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.h
 
 ## 2. Ablauf Schritt für Schritt
 
+**Zeitplan:** Die Routine startet gegen 04:45 Uhr. Veröffentlichungstermin ist **heute 09:00 Uhr (Europe/Berlin)**,
+Datum immer mit `TZ=Europe/Berlin date +%F` bestimmen. Ist es beim Einplanen schon nach 08:45 Uhr, den nächsten
+vollen Viertelstunden-Termin mindestens 20 Minuten in der Zukunft nehmen und das im Bericht nennen.
+Vorher mit `getScheduledPosts` (blogId 7155086, heute) prüfen, ob für heute 09:00 schon ein Reel eingeplant ist – dann
+nicht doppelt einplanen, sondern das nächste freie Datum 09:00 verwenden.
+
 ### 2.1 Setup
 ```bash
 # Repo ist per add_repo (owner goekcey-netizen, repo yaku-reels, access push) angebunden
@@ -45,6 +51,10 @@ git clone https://github.com/goekcey-netizen/yaku-reels.git && cd yaku-reels
 cd template && npm i && cd ..
 export PRODUCER_HEADLESS_SHELL_PATH=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell
 pip install --break-system-packages -q soundfile scipy numpy   # falls fehlend
+# HyperFrames-Regeln (Skills) zum Nachlesen:
+git clone -q --depth 1 https://github.com/heygen-com/hyperframes.git /tmp/hf
+#   → /tmp/hf/skills/hyperframes-core/SKILL.md, hyperframes-animation, hyperframes-cli lesen
+# Falls der Headless-Shell-Pfad abweicht: ls /opt/pw-browsers
 ```
 
 ### 2.2 Thema wählen
@@ -97,8 +107,12 @@ npx hyperframes render --fps 30 --video-bitrate 14M --output out/video_clean.mp4
    gh api -X POST repos/goekcey-netizen/yaku-reels/actions/workflows/fetch-audio.yml/dispatches \
      -f ref=main -f "inputs[url]=<URL>" -f "inputs[name]=<datum>_voice.mp3"
    # warten bis Run fertig: gh api repos/goekcey-netizen/yaku-reels/actions/runs?event=workflow_dispatch
-   gh release download audio-inbox -R goekcey-netizen/yaku-reels -p "<datum>_voice.mp3" -D voice/
+   # Download NUR über REST (gh release download nutzt GraphQL → in Claude-Sitzungen gesperrt):
+   AID=$(gh api repos/goekcey-netizen/yaku-reels/releases/tags/audio-inbox --jq '.assets[] | select(.name=="<datum>_voice.mp3") | .id')
+   mkdir -p voice && gh api -H "Accept: application/octet-stream" repos/goekcey-netizen/yaku-reels/releases/assets/$AID > voice/voiceover_full.mp3
    ```
+   Getestet am 02.10.2026: Dispatch → Run (~30 s) → REST-Download funktioniert. Die Cloud-Umgebung selbst darf
+   storage.googleapis.com nicht abrufen – keine Umwege versuchen.
 
 ### 2.9 Mischen, Untertitel anpassen, final
 ```bash
@@ -112,17 +126,23 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
 - **Ohne hörbare Sprecherspur wird NICHT gepostet.**
 
 ### 2.10 Veröffentlichen
-1. Release anlegen: Tag `<YYYY-MM-DD>-<id>`, Asset `reel_instagram.mp4` → öffentliche URL
-   `https://github.com/goekcey-netizen/yaku-reels/releases/download/<tag>/reel_instagram.mp4`
+1. Video öffentlich ablegen (Releases anlegen ist aus Claude-Sitzungen gesperrt, daher Branch `media`):
+   ```bash
+   URL=$(bash template/publish_media.sh projekte/<projekt>/out/reel_instagram.mp4 <YYYY-MM-DD>-<id> projekte/<projekt>/cover.png | tail -1)
+   ```
+   → `https://raw.githubusercontent.com/goekcey-netizen/yaku-reels/media/videos/<YYYY-MM-DD>-<id>.mp4`
+   (Metricool kopiert die Datei beim Einplanen auf static.metricool.com – getestet am 02.10.2026.)
 2. Metricool `createScheduledPost`:
    - blogId `7155086`, `publicationDate {dateTime:"<YYYY-MM-DD>T09:00:00", timezone:"Europe/Berlin"}`
    - `providers [{network:"instagram"}]`, `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`
    - **`autoPublish: false`** (Gökce gibt per Push in der Metricool-App frei)
-   - `media [<Release-URL>]`, `videoCoverMilliseconds` = ein starker Frame (Hook-Titel, meist 2000–4500)
+   - `media [<raw-URL aus Schritt 1>]`, `videoCoverMilliseconds` = ein starker Frame (Hook-Titel, meist 2000–4500)
    - Caption: 1. Zeile = Hook (≤ 90 Zeichen), 2–4 kurze Zeilen Mehrwert, CTA „Schaden melden? Link in der Bio 👉 yaku-gutachten.de“,
-     3–5 Hashtags (#kfzgutachter #unfall #münchen + themenspezifisch). Kein Em-Dash-Spam, natürlich klingen.
-3. `themen.json`: Status `eingeplant`, `datum`, `release`, `plannerUrl`. Projektordner (ohne große Videos, siehe .gitignore) committen & pushen.
+     3–5 Hashtags (#KfzGutachter #Unfallgutachten #München + themenspezifisch). Caption in Sie-Form wie der bestehende Feed.
+     Kein Em-Dash-Spam, natürlich klingen. Keine Aussage, die nicht auch im Video/`quellen.md` belegt ist.
+3. `themen.json`: Status `eingeplant`, `datum`, `video` (raw-URL), `plannerUrl`. Projektordner (ohne große Videos, siehe .gitignore) committen & pushen.
 
 ### 2.11 Bericht an Gökce
-Kurz: Thema, Link zum Release-Video, Metricool-Planner-Link, Quellen, Auffälligkeiten.
+Per `SendUserMessage` auf Deutsch, Anrede „Gökce“: Thema, Video-Link, Metricool-Planner-Link, Freigabe-Hinweis
+(Push in der Metricool-App um 09:00), Quellen, Auffälligkeiten, verbrauchte ElevenLabs-Credits.
 Bei Fehlern: was fehlt, ob gepostet wurde (nur mit Stimme!).
