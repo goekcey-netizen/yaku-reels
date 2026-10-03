@@ -1,0 +1,123 @@
+{
+  "hinweis": "Redaktionsplan der Feed-Posts (alle 2 Tage, 09:00 Europe/Berlin, automatisch über Metricool). Die Routine nimmt das erste Thema mit status 'offen', setzt danach status 'gepostet' + datum + plannerUrl. Reihenfolge und Texte jederzeit änderbar. Nur Aussagen verwenden, die auf yaku-gutachten.de stehen oder allgemein fachlich belegt sind.",
+  "themen": [
+    {"nr": 0, "id": "wer-zahlt-den-gutachter", "titel": "Wer zahlt den Gutachter?", "typ": "karussell", "status": "gepostet", "datum": "2026-10-02"},
+    {"nr": 0, "id": "gutachter-frei-waehlbar", "titel": "Gutachter frei wählbar", "typ": "karussell", "status": "gepostet", "datum": "2026-10-02"},
+    {"nr": 0, "id": "unfall-erst-mal-klarheit", "titel": "Unfall? Erst mal Klarheit.", "typ": "einzelbild", "status": "gepostet", "datum": "2026-10-02"},
+
+    {
+      "nr": 1, "id": "ablauf-schaden-zum-gutachten", "titel": "Vom Schaden zum Gutachten – der Ablauf", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": false,
+        "cover": {"stil": "cream", "eyebrow": "Einfach & transparent", "zeile1": "Vom Schaden", "zeile2": "zum Gutachten.", "sub": "In drei Schritten zur klaren Bewertung.", "icon": "liste"},
+        "slides": [
+          {"kicker": "Schaden melden", "text": "Online, per WhatsApp oder telefonisch – <em>Sie melden, wir planen.</em>", "support": "Wir erfassen die wichtigsten Angaben und finden den schnellsten Termin."},
+          {"kicker": "Begutachtung", "text": "Wir kommen <em>zu Ihnen</em> und dokumentieren präzise.", "support": "Der Schaden wird vor Ort unabhängig bewertet – bei Ihnen, in der Werkstatt oder am Fahrzeugstandort."},
+          {"kicker": "Gutachten erhalten", "text": "Sie erhalten ein <em>verständliches, vollständiges</em> Gutachten.", "support": "Als belastbare Grundlage für die Regulierung Ihres Schadens."}
+        ],
+        "cta": {"zeile1": "Schaden passiert?", "zeile2": "Wir übernehmen.", "sub": "Melden Sie Ihren Schaden – wir finden den schnellsten Termin."}
+      },
+      "caption": "Vom Schaden zum Gutachten – so einfach läuft es bei uns ab:\n\n1️⃣ Schaden melden: online, per WhatsApp oder telefonisch. Wir erfassen die wichtigsten Angaben und finden den schnellsten Termin.\n2️⃣ Begutachtung: Wir kommen zu Ihnen, dokumentieren präzise und bewerten den Schaden unabhängig.\n3️⃣ Gutachten erhalten: verständlich, vollständig und als belastbare Grundlage.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #KfzGutachterMünchen #Unfallgutachten #Schadengutachten #KfzSachverständiger #Unfallschaden #München #Unterschleißheim"
+    },
+    {
+      "nr": 2, "id": "wir-kommen-zu-ihnen", "titel": "Vor-Ort-Service: Wir kommen zu Ihnen", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Vor-Ort-Service", "zeile1": "Wir kommen", "zeile2": "zu Ihnen.", "sub1": "Begutachtung dort, wo Ihr Fahrzeug steht.", "sub2": "Flexibel in München & Umgebung.", "labels": ["Zuhause", "Werkstatt", "Fahrzeugstandort"]},
+      "caption": "Ihr Fahrzeug muss nicht zu uns – wir kommen zu Ihnen. 🚗\n\nDie Begutachtung erfolgt bei Ihnen, am Fahrzeugstandort oder in Ihrer Werkstatt. Flexibel in München, Unterschleißheim, Oberschleißheim, Garching, Dachau, Freising und Umgebung.\n\nSchaden melden: online, telefonisch oder per WhatsApp.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #KfzGutachterMünchen #VorOrtService #Unfallgutachten #KfzSachverständiger #München #Unterschleißheim #Dachau #Freising"
+    },
+    {
+      "nr": 3, "id": "wann-brauche-ich-einen-gutachter", "titel": "Wann brauche ich einen Gutachter?", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": true,
+        "cover": {"stil": "navy", "eyebrow": "Gut zu wissen", "zeile1": "Gutachter –", "zeile2": "wann sinnvoll?", "sub": "Woran Sie erkennen, ob sich ein Gutachten lohnt.", "icon": "frage"},
+        "slides": [
+          {"kicker": "Mehr als ein Kratzer", "text": "Ein Gutachten ist vor allem sinnvoll, wenn der Schaden <em>nicht nur geringfügig</em> ist.", "support": "Bei sehr kleinen Bagatellschäden kann ein Kostenvoranschlag ausreichen."},
+          {"kicker": "Volle Schadenhöhe", "text": "Das Gutachten dokumentiert den <em>gesamten Schaden</em> – inklusive möglicher Wertminderung.", "support": "Auch Schäden, die auf den ersten Blick nicht sichtbar sind, werden erfasst und bewertet."},
+          {"kicker": "Belastbare Grundlage", "text": "Sie haben eine <em>belastbare Grundlage</em> gegenüber der Versicherung.", "support": "Unsicher, ob es sich lohnt? Wir informieren Sie vorab, was in Ihrer Situation gilt."}
+        ],
+        "cta": {"zeile1": "Unsicher?", "zeile2": "Fragen Sie uns.", "sub": "Wir sagen Ihnen vorab, was in Ihrem Fall sinnvoll ist."}
+      },
+      "caption": "Wann brauche ich eigentlich einen Kfz-Gutachter?\n\nEin unabhängiges Gutachten ist vor allem dann sinnvoll, wenn der Schaden nicht nur geringfügig ist. Es dokumentiert die volle Schadenhöhe, inklusive möglicher Wertminderung, und schafft eine belastbare Grundlage gegenüber der Versicherung. Bei sehr kleinen Bagatellschäden kann ein Kostenvoranschlag ausreichen.\n\nUnsicher? Wir informieren Sie vorab, was in Ihrer Situation gilt.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #KfzGutachterMünchen #Unfallgutachten #KfzSachverständiger #Unfallschaden #Bagatellschaden #München #Unterschleißheim"
+    },
+    {
+      "nr": 4, "id": "wertminderung", "titel": "Repariert – und trotzdem weniger wert", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Wertminderung", "zeile1": "Repariert?", "zeile2": "Trotzdem weniger wert.", "sub1": "Ein Unfallwagen verliert oft an Marktwert.", "sub2": "Die Wertminderung gehört ins Gutachten.", "labels": ["Schaden", "Reparatur", "Wertminderung"]},
+      "caption": "Repariert – und trotzdem weniger wert?\n\nEin Fahrzeug mit Unfallvergangenheit erzielt beim Verkauf oft einen niedrigeren Preis, auch wenn es fachgerecht repariert wurde. Diesen Wertverlust nennt man merkantile Wertminderung.\n\nIn unseren Unfallgutachten ermitteln wir neben Schadenhöhe und Reparaturkosten auch eine mögliche Wertminderung – damit sie bei der Regulierung nicht vergessen wird.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #Wertminderung #Unfallgutachten #KfzSachverständiger #Unfallschaden #Fahrzeugschaden #München #Unterschleißheim"
+    },
+    {
+      "nr": 5, "id": "was-steht-im-gutachten", "titel": "Was steht in einem Unfallgutachten?", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": true,
+        "cover": {"stil": "cream", "eyebrow": "Einblick", "zeile1": "Was steht im", "zeile2": "Gutachten?", "sub": "Die wichtigsten Werte – einfach erklärt.", "icon": "dokument"},
+        "slides": [
+          {"kicker": "Reparaturkosten", "text": "Was die fachgerechte <em>Reparatur</em> Ihres Fahrzeugs kostet.", "support": "Ermittelt anhand des dokumentierten Schadens."},
+          {"kicker": "Wiederbeschaffungswert", "text": "Was ein <em>vergleichbares Fahrzeug</em> vor dem Unfall gekostet hätte.", "support": "Wichtig vor allem, wenn sich eine Reparatur nicht mehr lohnt."},
+          {"kicker": "Wertminderung", "text": "Wie viel Ihr Fahrzeug durch den Unfall <em>an Wert verliert</em> – trotz Reparatur.", "support": "Die sogenannte merkantile Wertminderung."}
+        ],
+        "cta": {"zeile1": "Alles drin.", "zeile2": "Klar erklärt.", "sub": "Wir erklären Ihnen jeden Wert in Ihrem Gutachten verständlich."}
+      },
+      "caption": "Was steht eigentlich in einem Unfallgutachten?\n\n🔧 Reparaturkosten: Was die fachgerechte Reparatur kostet.\n🚗 Wiederbeschaffungswert: Was ein vergleichbares Fahrzeug vor dem Unfall gekostet hätte.\n📉 Wertminderung: Wie viel Ihr Fahrzeug trotz Reparatur an Wert verliert.\n\nDazu kommen Schadenhöhe und eine nachvollziehbare Dokumentation. Wir erklären jeden Wert verständlich.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #Unfallgutachten #Wiederbeschaffungswert #Wertminderung #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim"
+    },
+    {
+      "nr": 6, "id": "persoenlicher-ansprechpartner", "titel": "Kein Callcenter – ein Ansprechpartner", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Persönlich für Sie da", "zeile1": "Persönlich.", "zeile2": "Ohne Callcenter.", "sub1": "Sie sprechen direkt mit uns – ohne Umwege.", "sub2": "Fachlich präzise. Menschlich verständlich.", "labels": ["Anruf", "WhatsApp", "Vor Ort"]},
+      "caption": "Ein Schaden bringt genug Fragen mit sich. Deshalb sprechen Sie bei uns direkt mit Ihrem persönlichen Ansprechpartner – ohne Callcenter und ohne Umwege.\n\nWir erklären jeden Schritt verständlich und bleiben während des gesamten Ablaufs erreichbar.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #KfzGutachterMünchen #Unfallgutachten #KfzSachverständiger #Schadengutachten #München #Unterschleißheim #Garching"
+    },
+    {
+      "nr": 7, "id": "nach-dem-unfall-erste-schritte", "titel": "Nach dem Unfall: die ersten Schritte", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": true,
+        "cover": {"stil": "navy", "eyebrow": "Checkliste", "zeile1": "Unfall passiert?", "zeile2": "Das ist jetzt wichtig.", "sub": "Die ersten Schritte nach einem Unfall.", "icon": "liste"},
+        "slides": [
+          {"kicker": "Absichern", "text": "Warnblinker an, Warnweste anziehen, <em>Warndreieck aufstellen.</em>", "support": "Gibt es Verletzte: sofort den Notruf 112 wählen."},
+          {"kicker": "Dokumentieren", "text": "<em>Fotos</em> von Unfallstelle und Schäden, Daten austauschen.", "support": "Kennzeichen, Name, Anschrift, Versicherung – und Kontaktdaten von Zeugen notieren."},
+          {"kicker": "Schaden melden", "text": "Dann kümmern wir uns um die <em>unabhängige Begutachtung.</em>", "support": "Online, per WhatsApp oder telefonisch – rund um die Uhr erreichbar."}
+        ],
+        "cta": {"zeile1": "Unfall gehabt?", "zeile2": "Wir sind für Sie da.", "sub": "Rund um die Uhr erreichbar – Termine nach Vereinbarung."}
+      },
+      "caption": "Unfall gehabt? Diese Schritte sind jetzt wichtig:\n\n⚠️ Unfallstelle absichern: Warnblinker, Warnweste, Warndreieck. Bei Verletzten sofort 112 wählen.\n📸 Dokumentieren: Fotos von Unfallstelle und Schäden machen, Daten mit dem Unfallgegner austauschen, Zeugen notieren.\n📲 Schaden melden: Wir kümmern uns um die unabhängige Begutachtung.\n\nSpeichern Sie sich diesen Beitrag – für den Fall der Fälle.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#Autounfall #Unfall #KfzGutachter #Unfallgutachten #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim"
+    },
+    {
+      "nr": 8, "id": "unsere-leistungen", "titel": "Unsere Leistungen", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Unsere Leistungen", "zeile1": "Vier Leistungen.", "zeile2": "Ein Ansprechpartner.", "sub1": "Unfallgutachten · Kfz-Schadengutachten", "sub2": "Fahrzeugbewertung · Vor-Ort-Begutachtung", "labels": ["Unfallgutachten", "Schadengutachten", "Fahrzeugwert"]},
+      "caption": "Das bieten wir Ihnen:\n\n✔️ Unfallgutachten: Schadenhöhe, Reparaturkosten, Wiederbeschaffungswert und Wertminderung\n✔️ Kfz-Schadengutachten: unabhängige Dokumentation und Bewertung von Fahrzeugschäden\n✔️ Fahrzeugbewertung: Ermittlung des aktuellen Fahrzeugwertes\n✔️ Vor-Ort-Begutachtung: bei Ihnen, in der Werkstatt oder am gewünschten Standort\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #Unfallgutachten #Schadengutachten #Fahrzeugbewertung #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim"
+    },
+    {
+      "nr": 9, "id": "gutachten-oder-kostenvoranschlag", "titel": "Gutachten oder Kostenvoranschlag?", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": true,
+        "cover": {"stil": "cream", "eyebrow": "Der Unterschied", "zeile1": "Gutachten oder", "zeile2": "Kostenvoranschlag?", "sub": "Was Sie nach einem Unfall wissen sollten.", "icon": "frage"},
+        "slides": [
+          {"kicker": "Kostenvoranschlag", "text": "Nennt die voraussichtlichen <em>Reparaturkosten</em> einer Werkstatt.", "support": "Kann bei sehr kleinen Bagatellschäden ausreichen."},
+          {"kicker": "Gutachten", "text": "Dokumentiert den Schaden <em>umfassend und unabhängig.</em>", "support": "Inklusive Wiederbeschaffungswert und möglicher Wertminderung."},
+          {"kicker": "Unsere Empfehlung", "text": "Wir sagen Ihnen <em>vorab</em>, was in Ihrem Fall sinnvoll ist.", "support": "Transparent und verständlich – bevor Kosten entstehen."}
+        ],
+        "cta": {"zeile1": "Lieber sicher.", "zeile2": "Wir beraten Sie.", "sub": "Fragen Sie uns, bevor Sie entscheiden."}
+      },
+      "caption": "Gutachten oder Kostenvoranschlag – was brauche ich nach einem Unfall?\n\n🧾 Ein Kostenvoranschlag nennt die voraussichtlichen Reparaturkosten einer Werkstatt. Bei sehr kleinen Bagatellschäden kann das ausreichen.\n📋 Ein Gutachten dokumentiert den Schaden umfassend und unabhängig, inklusive Wiederbeschaffungswert und möglicher Wertminderung.\n\nUnsicher? Wir sagen Ihnen vorab, was in Ihrem Fall sinnvoll ist.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #Kostenvoranschlag #Unfallgutachten #KfzSachverständiger #Unfallschaden #KfzGutachterMünchen #München #Unterschleißheim"
+    },
+    {
+      "nr": 10, "id": "rund-um-die-uhr", "titel": "Rund um die Uhr erreichbar", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Erreichbarkeit", "zeile1": "Auch spät.", "zeile2": "Wir sind erreichbar.", "sub1": "Rund um die Uhr erreichbar.", "sub2": "Termine nach Vereinbarung.", "labels": ["Anrufen", "WhatsApp", "Online melden"]},
+      "caption": "Ein Unfall passiert selten zu Bürozeiten. Deshalb sind wir rund um die Uhr erreichbar – Termine nach Vereinbarung.\n\nMelden Sie Ihren Schaden einfach online, telefonisch oder per WhatsApp. Wir melden uns und finden den schnellsten Termin.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #KfzGutachterMünchen #Unfallgutachten #KfzSachverständiger #Autounfall #München #Unterschleißheim #Oberschleißheim"
+    },
+    {
+      "nr": 11, "id": "einsatzgebiet", "titel": "Unser Einsatzgebiet", "typ": "karussell", "status": "offen", "datum": null,
+      "karussell": {
+        "disclaimer": false,
+        "cover": {"stil": "navy", "eyebrow": "Einsatzgebiet", "zeile1": "Wir kommen", "zeile2": "zu Ihnen.", "sub": "Vor-Ort-Begutachtung im Münchner Norden und Umgebung.", "icon": "pin"},
+        "slides": [
+          {"kicker": "München & Unterschleißheim", "text": "In <em>München</em> und rund um unseren Sitz in <em>Unterschleißheim.</em>", "support": "Bei Ihnen, am Fahrzeugstandort oder in Ihrer Werkstatt."},
+          {"kicker": "Oberschleißheim & Garching", "text": "Auch in <em>Oberschleißheim</em> und <em>Garching</em> sind wir für Sie unterwegs.", "support": "Flexible Termine – wir finden den schnellsten."},
+          {"kicker": "Dachau & Freising", "text": "Und in <em>Dachau, Freising</em> und Umgebung.", "support": "Ihr Ort ist nicht dabei? Fragen Sie uns einfach."}
+        ],
+        "cta": {"zeile1": "In Ihrer Nähe?", "zeile2": "Sehr wahrscheinlich.", "sub": "Melden Sie Ihren Schaden – wir kommen zu Ihnen."}
+      },
+      "caption": "Wo sind wir für Sie unterwegs?\n\n📍 München\n📍 Unterschleißheim\n📍 Oberschleißheim\n📍 Garching\n📍 Dachau\n📍 Freising\n…und Umgebung.\n\nDie Begutachtung erfolgt bei Ihnen, am Fahrzeugstandort oder in Ihrer Werkstatt. Ihr Ort ist nicht dabei? Fragen Sie uns einfach.\n\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #KfzGutachterMünchen #München #Unterschleißheim #Oberschleißheim #Garching #Dachau #Freising"
+    },
+    {
+      "nr": 12, "id": "digitale-schadenaufnahme", "titel": "Digitale Schadenaufnahme", "typ": "einzelbild", "status": "offen", "datum": null,
+      "bild": {"eyebrow": "Digitale Schadenaufnahme", "zeile1": "Präzise", "zeile2": "dokumentiert.", "sub1": "Schnelle Schadenaufnahme mit moderner Technik.", "sub2": "Nachvollziehbar bis ins Detail.", "labels": ["Fotos", "Fahrzeugdaten", "Kalkulation"]},
+      "caption": "Präzise dokumentiert, nachvollziehbar bewertet.\n\nMit digitaler Schadenaufnahme erfassen wir Ihren Fahrzeugschaden schnell und genau – direkt vor Ort. So entsteht ein verständliches, vollständiges Gutachten als belastbare Grundlage.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nYAKÜ Gutachten – Ihr Schaden. Klar bewertet.\n\n#KfzGutachter #Schadengutachten #Unfallgutachten #KfzSachverständiger #KfzGutachterMünchen #Fahrzeugschaden #München #Unterschleißheim"
+    }
+  ]
+}

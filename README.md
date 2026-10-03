@@ -11,3 +11,7 @@ Tägliche animierte Erklär-Reels für **YAKÜ Gutachten** (Kfz-Sachverständige
 - Sprecherspuren holt die Action `fetch-audio` von ElevenLabs ab (Release `audio-inbox`).
 
 Musik und Sounddesign sind vollständig selbst synthetisiert (lizenzfrei). Schriften: SIL Open Font License.
+
+## Feed-Posts (alle 2 Tage, 09:00)
+- `feed/` – Generator `yaku_feed.py` (1080×1350, YAKÜ-Look), Themenplan `themen-feed.json`, Arbeitsanweisung `FEED_PLAYBOOK.md`
+- Bilder liegen öffentlich im Branch **`media`**, Ordner `feed/` (`feed/publish_images.sh`, 30 Tage)
