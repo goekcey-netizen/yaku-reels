@@ -1,5 +1,5 @@
 {
-  "hinweis": "Die tägliche Routine nimmt das erste Thema mit status 'offen', setzt es danach auf 'eingeplant' + Datum. Reihenfolge/Themen jederzeit änderbar.",
+  "hinweis": "Die wöchentliche Routine nimmt das erste Thema mit status 'offen', plant es für den nächsten freien Samstag 18:00 und setzt es auf 'eingeplant' + Datum. Reihenfolge/Themen jederzeit änderbar.",
   "themen": [
     {
       "nr": 1,
@@ -18,7 +18,7 @@
       "titel": "Wer bezahlt das Gutachten nach einem Unfall?",
       "inhalt": "Unverschuldet vs. selbst verursacht, Haftpflicht der Gegenseite, Bagatellgrenze (vorsichtig formulieren)",
       "status": "eingeplant",
-      "datum": "2026-10-04",
+      "datum": "2026-10-10",
       "video": "https://raw.githubusercontent.com/goekcey-netizen/yaku-reels/media/videos/2026-10-04-wer-zahlt-das-gutachten.mp4",
       "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7155086&openWithPostUuid=-6165624748296813360",
       "projekt": "projekte/2026-10-04-wer-zahlt-das-gutachten"

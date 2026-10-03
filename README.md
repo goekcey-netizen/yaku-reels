@@ -4,7 +4,7 @@ Tägliche animierte Erklär-Reels für **YAKÜ Gutachten** (Kfz-Sachverständige
 
 - `template/` – HyperFrames-Vorlage (Animation, Figuren, Endcard), Sound-Engine, Mix- und Untertitel-Skripte
 - `beispiel-2026-10-02/` – Referenzfilm „Was macht ein Kfz-Gutachter eigentlich?“
-- `projekte/` – ein Ordner pro Tag
+- `projekte/` – ein Ordner pro Reel (wöchentlich, Samstag 18:00)
 - `themen.json` – Redaktionsplan (Status je Thema)
 - `PLAYBOOK.md` – Arbeitsanweisung der Tagesroutine
 - Fertige Videos liegen im Branch **`media`** (öffentliche raw-Links für Metricool, letzte 14 Tage; `template/publish_media.sh`).

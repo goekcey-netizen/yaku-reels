@@ -1,8 +1,8 @@
-# YAKÜ Reels – Playbook für die tägliche Routine
+# YAKÜ Reels – Playbook für die wöchentliche Routine
 
 Dieses Dokument ist die verbindliche Arbeitsanweisung für die automatische Tagesroutine.
-Jeden Tag entsteht **ein neues, ca. 60 s langes animiertes Erklärvideo (9:16) zu einem neuen Thema**,
-das um **09:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **zur Freigabe** eingeplant wird.
+Einmal pro Woche entsteht **ein neues, ca. 60 s langes animiertes Erklärvideo (9:16) zu einem neuen Thema**,
+das für **Samstag, 18:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **zur Freigabe** eingeplant wird.
 
 Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.html`
 („Was macht ein Kfz-Gutachter eigentlich?“).
@@ -38,11 +38,11 @@ Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.h
 
 ## 2. Ablauf Schritt für Schritt
 
-**Zeitplan:** Die Routine startet gegen 04:45 Uhr. Veröffentlichungstermin ist **heute 09:00 Uhr (Europe/Berlin)**,
-Datum immer mit `TZ=Europe/Berlin date +%F` bestimmen. Ist es beim Einplanen schon nach 08:45 Uhr, den nächsten
-vollen Viertelstunden-Termin mindestens 20 Minuten in der Zukunft nehmen und das im Bericht nennen.
-Vorher mit `getScheduledPosts` (blogId 7155086, heute) prüfen, ob für heute 09:00 schon ein Reel eingeplant ist – dann
-nicht doppelt einplanen, sondern das nächste freie Datum 09:00 verwenden.
+**Zeitplan:** Die Routine läuft einmal pro Woche (samstags früh). Veröffentlichungstermin ist immer ein **Samstag um 18:00 Uhr
+(Europe/Berlin)** – und zwar der **nächste Samstag ab heute, an dem um 18:00 noch kein Reel eingeplant ist**
+(Datum mit `TZ=Europe/Berlin date +%F` bestimmen). Dazu vorher `getScheduledPosts` (blogId 7155086, heute bis +5 Wochen)
+abfragen. Pro Samstag höchstens ein Reel, an anderen Tagen nie. Ist der gewählte Termin weniger als 30 Minuten entfernt,
+den nächsten freien Samstag nehmen.
 
 ### 2.1 Setup
 ```bash
@@ -138,7 +138,7 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
    → `https://raw.githubusercontent.com/goekcey-netizen/yaku-reels/media/videos/<YYYY-MM-DD>-<id>.mp4`
    (Metricool kopiert die Datei beim Einplanen auf static.metricool.com – getestet am 02.10.2026.)
 2. Metricool `createScheduledPost`:
-   - blogId `7155086`, `publicationDate {dateTime:"<YYYY-MM-DD>T09:00:00", timezone:"Europe/Berlin"}`
+   - blogId `7155086`, `publicationDate {dateTime:"<YYYY-MM-DD>T18:00:00", timezone:"Europe/Berlin"}` (immer ein Samstag)
    - `providers [{network:"instagram"}]`, `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`
    - **`autoPublish: false`** (Gökce gibt per Push in der Metricool-App frei)
    - `media [<raw-URL aus Schritt 1>]`, `videoCoverMilliseconds` = ein starker Frame (Hook-Titel, meist 2000–4500)
@@ -149,5 +149,5 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
 
 ### 2.11 Bericht an Gökce
 Per `SendUserMessage` auf Deutsch, Anrede „Gökce“: Thema, Video-Link, Metricool-Planner-Link, Freigabe-Hinweis
-(Push in der Metricool-App um 09:00), Quellen, Auffälligkeiten, verbrauchte ElevenLabs-Credits.
+(Push in der Metricool-App am Samstag um 18:00), Quellen, Auffälligkeiten, verbrauchte ElevenLabs-Credits.
 Bei Fehlern: was fehlt, ob gepostet wurde (nur mit Stimme!).
