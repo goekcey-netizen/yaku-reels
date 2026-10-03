@@ -1,0 +1,14 @@
+{
+ "note": "start = geplanter Einsatz (s), maxlen = Zeitfenster (s), captions = Indizes der CAPS-Einträge in index.html, die zu diesem Satz gehören",
+ "takes": [
+  {"take": "VO01", "start": 1.35, "maxlen": 4.75, "text": "Unfall gehabt – und jetzt? Wer bezahlt eigentlich das Gutachten?", "captions": [0, 1]},
+  {"take": "VO02", "start": 6.6, "maxlen": 6.8, "text": "Fall eins: Der andere ist schuld. Dann zahlt in der Regel seine Haftpflichtversicherung das Gutachten.", "captions": [2, 3, 4]},
+  {"take": "VO03", "start": 13.9, "maxlen": 3.9, "text": "Und deinen Gutachter darfst du dir grundsätzlich selbst aussuchen.", "captions": [5, 6]},
+  {"take": "VO04", "start": 18.3, "maxlen": 6.95, "text": "Fall zwei: Teilschuld. Dann wird meist nach Haftungsquote geteilt – auch bei den Gutachterkosten.", "captions": [7, 8, 9]},
+  {"take": "VO05", "start": 25.8, "maxlen": 5.3, "text": "Fall drei: Du hast den Unfall selbst verursacht. Dann zahlt die Gegenseite nichts.", "captions": [10, 11, 12]},
+  {"take": "VO06", "start": 31.6, "maxlen": 6.35, "text": "Mit Kaskoschutz: vorher die Versicherung fragen. Wer eigenmächtig beauftragt, zahlt oft selbst.", "captions": [13, 14, 15, 16]},
+  {"take": "VO07", "start": 38.5, "maxlen": 7.7, "text": "Bei kleinen Bagatellschäden reicht oft ein Kostenvoranschlag. Richtwert laut ADAC: rund tausend Euro.", "captions": [17, 18, 19, 20]},
+  {"take": "VO08", "start": 46.8, "maxlen": 5.1, "text": "Wer zahlt, hängt also von der Schuldfrage ab. Im Zweifel: fachlich beraten lassen.", "captions": [21, 22, 23]},
+  {"take": "VO09", "start": 55.4, "maxlen": 4.2, "text": "Jakü Gutachten. Ihr Schaden. Klar bewertet.", "captions": []}
+ ]
+}

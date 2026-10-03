@@ -111,7 +111,11 @@ npx hyperframes render --fps 30 --video-bitrate 14M --output out/video_clean.mp4
    AID=$(gh api repos/goekcey-netizen/yaku-reels/releases/tags/audio-inbox --jq '.assets[] | select(.name=="<datum>_voice.mp3") | .id')
    mkdir -p voice && gh api -H "Accept: application/octet-stream" repos/goekcey-netizen/yaku-reels/releases/assets/$AID > voice/voiceover_full.mp3
    ```
-   Getestet am 02.10.2026: Dispatch → Run (~30 s) → REST-Download funktioniert. Die Cloud-Umgebung selbst darf
+   Getestet am 02.10.2026: Dispatch → Run (~30 s) → REST-Download funktioniert.
+   Hinweis 03.10.2026: Ist `gh` nicht angemeldet, Dispatch über das GitHub-MCP-Tool `actions_run_trigger`
+   (workflow fetch-audio.yml, ref main) auslösen und das Asset über die öffentliche URL laden:
+   `curl -fsSL -o voice/read.mp3 https://github.com/goekcey-netizen/yaku-reels/releases/download/audio-inbox/<datum>_voice.mp3`
+   (Prüfsumme mit dem `digest` aus `get_release_by_tag` vergleichen). Eine Datei wie `voice/read.mp3` wird von mix.py als durchgehende Lesung erkannt und in Takes geschnitten. Die Cloud-Umgebung selbst darf
    storage.googleapis.com nicht abrufen – keine Umwege versuchen.
 
 ### 2.9 Mischen, Untertitel anpassen, final
@@ -126,7 +130,8 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
 - **Ohne hörbare Sprecherspur wird NICHT gepostet.**
 
 ### 2.10 Veröffentlichen
-1. Video öffentlich ablegen (Releases anlegen ist aus Claude-Sitzungen gesperrt, daher Branch `media`):
+1. Video öffentlich ablegen (Releases anlegen ist aus Claude-Sitzungen gesperrt, daher Branch `media`).
+   **Absolute Pfade übergeben** – das Skript wechselt in ein Temp-Verzeichnis:
    ```bash
    URL=$(bash template/publish_media.sh projekte/<projekt>/out/reel_instagram.mp4 <YYYY-MM-DD>-<id> projekte/<projekt>/cover.png | tail -1)
    ```
