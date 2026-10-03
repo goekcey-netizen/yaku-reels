@@ -2,7 +2,7 @@
 # Legt fertige Feed-Bilder öffentlich im Branch "media" (Ordner feed/) ab und gibt pro Bild
 # die öffentliche raw-URL aus (eine pro Zeile, in Reihenfolge). Behält 30 Tage.
 # Videos der Reel-Routine (Ordner videos/) bleiben unangetastet.
-#   bash feed/publish_images.sh <YYYY-MM-DD>-<thema-id> bild1.png [bild2.png ...]
+#   bash feed/publish_images.sh <YYYY-MM-DD>-<thema-id> bild1.jpg [bild2.jpg ...]   (immer JPEG – PNG scheitert bei Metricool/Instagram)
 set -euo pipefail
 NAME="$1"; shift
 REPO=https://github.com/goekcey-netizen/yaku-reels.git
@@ -16,7 +16,7 @@ cd m
 mkdir -p feed
 i=0; URLS=()
 for f in "$@"; do
-  i=$((i+1)); dst="feed/${NAME}-$(printf %02d $i).png"
+  i=$((i+1)); ext="${f##*.}"; dst="feed/${NAME}-$(printf %02d $i).$ext"
   cp "$W/$(basename "$f")" "$dst"
   URLS+=("https://raw.githubusercontent.com/goekcey-netizen/yaku-reels/media/$dst")
 done

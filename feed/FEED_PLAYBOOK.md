@@ -8,7 +8,7 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
 
 | Was | Wert |
 |---|---|
-| Format | 1080 × 1350 (4:5), PNG |
+| Format | 1080 × 1350 (4:5), **JPEG** (PNG scheitert bei Metricool/Instagram mit „ERROR / Unknown“) |
 | Typen | `einzelbild` (Headline + Auto mit Messkreis + 3 Labels + CTA) · `karussell` (Cover · 3 Inhalts-Slides · CTA) – abwechselnd |
 | Farben | Navy `#071B3A`, Gold `#D8A52C`/`#E0B64D`, Creme `#F4F1EA`, Akzentblau `#1556C0` |
 | Schriften | Fraunces (variabel, opsz), Inter, JetBrains Mono – liegen in `feed/assets/fonts` |
@@ -42,14 +42,14 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
    Sind keine offenen Themen mehr da: ein **neues Thema** nach demselben Schema anlegen
    (Typ abwechselnd zum letzten geposteten), Inhalte nur aus yaku-gutachten.de bzw. belegbaren Quellen,
    Quellen im Bericht nennen. Headlines kurz halten (Zeile 1 eines Einzelbilds max. ~14 Zeichen).
-4. **Rendern**: `python3 feed/yaku_feed.py <id>` → `feed/out/<id>/01.png …` + `vorschau.png`.
+4. **Rendern**: `python3 feed/yaku_feed.py <id>` → `feed/out/<id>/01.jpg …` + `vorschau.jpg`.
    **Jedes Bild ansehen** (Read): Text vollständig, nichts abgeschnitten, keine Überlappung, Umlaute korrekt.
    Bei Problemen Text in der JSON kürzen bzw. `fs`/`fs1`/`fs2` setzen und neu rendern.
 5. **Öffentlich ablegen**:
    ```bash
-   bash feed/publish_images.sh "$DATUM-<id>" feed/out/<id>/0*.png   # gibt die URLs in Reihenfolge aus
+   bash feed/publish_images.sh "$DATUM-<id>" feed/out/<id>/0*.jpg   # gibt die URLs in Reihenfolge aus
    ```
-   Nur die PNGs `01.png`, `02.png` … übergeben (nicht `vorschau.png`).
+   Nur `01.jpg`, `02.jpg` … übergeben (nicht `vorschau.jpg`).
 6. **Metricool `createScheduledPost`** (blogId `7155086`, date `<DATUM>T09:00:00+02:00` bzw. +01:00 im Winter):
    ```json
    {"autoPublish": true, "draft": false, "text": "<caption>", "media": ["<url1>", "..."],
@@ -59,7 +59,9 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
     "firstCommentText": "", "shortener": false, "smartLinkData": {"ids": []}, "descendants": [], "hasNotReadNotes": false}
    ```
    `isAiGenerated` bleibt **false**: die Grafiken sind programmatisch gesetzte Typografie/Illustration, keine KI-Bilder.
+   Danach mit `getScheduledPosts` prüfen, dass der Post mit Status PENDING und allen Bildern drin ist.
+   **Hinweis:** Jeder neue Feed-Post verschiebt das 6-teilige Logo-Grid im Profil um eine Position – das ist so gewollt.
 7. **Plan aktualisieren**: Thema in `themen-feed.json` auf `"status": "gepostet"`, `"datum"`, `"plannerUrl"` setzen,
    committen und pushen (`main`). Vorher `git pull --rebase`, weil die Reel-Routine im selben Repo arbeitet.
-8. **Bericht** an Gökce (Deutsch, Anrede „Gökce“): Thema, Termin, Vorschaubild (`vorschau.png` per SendUserFile),
+8. **Bericht** an Gökce (Deutsch, Anrede „Gökce“): Thema, Termin, Vorschaubild (`vorschau.jpg` per SendUserFile),
    Metricool-Planner-Link, Auffälligkeiten. Wenn etwas scheitert: klar sagen, was fehlt und dass nichts eingeplant wurde.

@@ -214,8 +214,8 @@ def render(t, outdir):
             pg.wait_for_timeout(300)
             hi = os.path.join(outdir, f"{i:02d}_hi.png")
             pg.screenshot(path=hi); pg.close()
-            png = os.path.join(outdir, f"{i:02d}.png")
-            Image.open(hi).convert("RGB").resize((1080, 1350), Image.LANCZOS).save(png, optimize=True)
+            png = os.path.join(outdir, f"{i:02d}.jpg")  # JPEG: Metricool/Instagram lehnt PNG ab
+            Image.open(hi).convert("RGB").resize((1080, 1350), Image.LANCZOS).save(png, "JPEG", quality=93, optimize=True, progressive=False, subsampling=0)
             os.remove(hi)
             files.append(png)
         b.close()
@@ -238,4 +238,4 @@ if __name__ == "__main__":
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "out", tid)
     files = render(t, out)
     print("\n".join(files))
-    print("SHEET", contact_sheet(files, os.path.join(out, "vorschau.png")))
+    print("SHEET", contact_sheet(files, os.path.join(out, "vorschau.jpg")))
