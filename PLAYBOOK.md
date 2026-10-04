@@ -2,7 +2,7 @@
 
 Dieses Dokument ist die verbindliche Arbeitsanweisung für die automatische Tagesroutine.
 Einmal pro Woche entsteht **ein neues, ca. 60 s langes animiertes Erklärvideo (9:16) zu einem neuen Thema**,
-das für **Samstag, 18:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) **zur Freigabe** eingeplant wird.
+das für **Samstag, 18:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) eingeplant und **automatisch veröffentlicht** wird (autoPublish true, keine Freigabe nötig – Gökce, 04.10.2026).
 
 Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.html`
 („Was macht ein Kfz-Gutachter eigentlich?“).
@@ -142,7 +142,7 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
    - `providers [{network:"instagram"},{network:"tiktok"}]` – **Regel (Gökce, 04.10.2026): alles, was auf Instagram geht, geht zeitgleich auch auf TikTok**
    - `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`
    - `tiktokData {title:"<Hook, max. 90 Zeichen>", privacyOption:"PUBLIC_TO_EVERYONE", disableComment:false, disableDuet:false, disableStitch:false, autoAddMusic:false, commercialContentThirdParty:false, commercialContentOwnBrand:false, isAigc:true}
-   - **`autoPublish: false`** (Gökce gibt per Push in der Metricool-App frei)
+   - **`autoPublish: true`** – wird ohne Freigabe automatisch veröffentlicht (Vorgabe Gökce, 04.10.2026). Deshalb vor dem Einplanen Video, Ton und Caption besonders sorgfältig prüfen.
    - `media [<raw-URL aus Schritt 1>]`, `videoCoverMilliseconds` = ein starker Frame (Hook-Titel, meist 2000–4500)
    - Caption: 1. Zeile = Hook (≤ 90 Zeichen), 2–4 kurze Zeilen Mehrwert, CTA „Schaden melden? Link in der Bio 👉 yaku-gutachten.de“,
      3–5 Hashtags (#KfzGutachter #Unfallgutachten #München + themenspezifisch). Caption in Sie-Form wie der bestehende Feed.
@@ -150,6 +150,5 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
 3. `themen.json`: Status `eingeplant`, `datum`, `video` (raw-URL), `plannerUrl`. Projektordner (ohne große Videos, siehe .gitignore) committen & pushen.
 
 ### 2.11 Bericht an Gökce
-Per `SendUserMessage` auf Deutsch, Anrede „Gökce“: Thema, Video-Link, Metricool-Planner-Link, Freigabe-Hinweis
-(Push in der Metricool-App am Samstag um 18:00), Quellen, Auffälligkeiten, verbrauchte ElevenLabs-Credits.
+Per `SendUserMessage` auf Deutsch, Anrede „Gökce“: Thema, Video-Link, Metricool-Planner-Link, Hinweis „wird am Samstag um 18:00 automatisch veröffentlicht“, Quellen, Auffälligkeiten, verbrauchte ElevenLabs-Credits.
 Bei Fehlern: was fehlt, ob gepostet wurde (nur mit Stimme!).
