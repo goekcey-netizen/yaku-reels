@@ -2,7 +2,7 @@
 
 Dieses Dokument ist die verbindliche Arbeitsanweisung für die automatische Tagesroutine.
 Einmal pro Woche entsteht **ein neues, ca. 60 s langes animiertes Erklärvideo (9:16) zu einem neuen Thema**,
-das für **Samstag, 18:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **zur Freigabe** eingeplant wird.
+das für **Samstag, 18:00 Uhr (Europe/Berlin)** über Metricool auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) **zur Freigabe** eingeplant wird.
 
 Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.html`
 („Was macht ein Kfz-Gutachter eigentlich?“).
@@ -20,7 +20,7 @@ Referenzprojekt (Qualitätsmaßstab): `beispiel-2026-10-02/` + `template/index.h
 | Logo | `template/assets/logo.svg` (Original, nie verändern) |
 | Claim | „Ihr Schaden. Klar bewertet.“ |
 | Stimme | ElevenLabs, Voice „Lennard – Warm & Trustworthy“ `HNYELfQMgCeL9N0RGyxo`, Modell `eleven_multilingual_v2` |
-| Metricool | Brand `yaku.gutachten`, blogId `7155086`, Zeitzone Europe/Berlin, nur Instagram |
+| Metricool | Brand `yaku.gutachten`, blogId `7155086`, Zeitzone Europe/Berlin, **Instagram + TikTok im selben Post** |
 | GitHub | `goekcey-netizen/yaku-reels` (öffentlich) – `main`: Vorlage, Projekte, Themenplan · `media`: fertige Videos (öffentliche raw-URLs, letzte 14 Tage) |
 | Safe Area | Text nur in y 250–1480 px, x 60–960 px (Instagram-UI oben/unten/rechts) |
 
@@ -139,7 +139,9 @@ python3 ../../template/mix.py final .          # → out/reel_instagram.mp4
    (Metricool kopiert die Datei beim Einplanen auf static.metricool.com – getestet am 02.10.2026.)
 2. Metricool `createScheduledPost`:
    - blogId `7155086`, `publicationDate {dateTime:"<YYYY-MM-DD>T18:00:00", timezone:"Europe/Berlin"}` (immer ein Samstag)
-   - `providers [{network:"instagram"}]`, `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`
+   - `providers [{network:"instagram"},{network:"tiktok"}]` – **Regel (Gökce, 04.10.2026): alles, was auf Instagram geht, geht zeitgleich auch auf TikTok**
+   - `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`
+   - `tiktokData {title:"<Hook, max. 90 Zeichen>", privacyOption:"PUBLIC_TO_EVERYONE", disableComment:false, disableDuet:false, disableStitch:false, autoAddMusic:false, commercialContentThirdParty:false, commercialContentOwnBrand:false, isAigc:true}
    - **`autoPublish: false`** (Gökce gibt per Push in der Metricool-App frei)
    - `media [<raw-URL aus Schritt 1>]`, `videoCoverMilliseconds` = ein starker Frame (Hook-Titel, meist 2000–4500)
    - Caption: 1. Zeile = Hook (≤ 90 Zeichen), 2–4 kurze Zeilen Mehrwert, CTA „Schaden melden? Link in der Bio 👉 yaku-gutachten.de“,

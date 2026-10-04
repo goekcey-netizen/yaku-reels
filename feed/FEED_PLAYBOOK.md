@@ -1,6 +1,6 @@
 # YAKÜ Feed-Posts – Playbook für die Routine
 
-Alle **2 Tage um 09:00 Uhr (Europe/Berlin)** erscheint auf Instagram (@yaku.gutachten) ein neuer Feed-Post
+Alle **2 Tage um 09:00 Uhr (Europe/Berlin)** erscheint auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) ein neuer Feed-Post
 im festen YAKÜ-Look – **automatisch veröffentlicht über Metricool** (autoPublish true).
 Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post für **09:00 Uhr am selben Tag** ein.
 
@@ -14,7 +14,7 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
 | Schriften | Fraunces (variabel, opsz), Inter, JetBrains Mono – liegen in `feed/assets/fonts` |
 | Logo | `feed/assets/logo.svg` = Original von yaku-gutachten.de, nie verändern |
 | Claim | „Ihr Schaden. Klar bewertet.“ |
-| Metricool | blogId `7155086`, Zeitzone Europe/Berlin, nur Instagram, `autoPublish: true` |
+| Metricool | blogId `7155086`, Zeitzone Europe/Berlin, **Instagram + TikTok im selben Post** (TikTok als Foto-Karussell), `autoPublish: true` |
 | Bilder öffentlich | `feed/publish_images.sh` → Branch `media`, Ordner `feed/` (raw-URLs, 30 Tage) |
 
 ## 1. Inhaltliche Regeln (nicht verhandelbar)
@@ -53,13 +53,18 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
 6. **Metricool `createScheduledPost`** (blogId `7155086`, date `<DATUM>T09:00:00+02:00` bzw. +01:00 im Winter):
    ```json
    {"autoPublish": true, "draft": false, "text": "<caption>", "media": ["<url1>", "..."],
-    "mediaAltText": ["YAKÜ Gutachten – <titel>"], "providers": [{"network": "instagram"}],
+    "mediaAltText": ["YAKÜ Gutachten – <titel>"], "providers": [{"network": "instagram"}, {"network": "tiktok"}],
     "publicationDate": {"dateTime": "<DATUM>T09:00:00", "timezone": "Europe/Berlin"},
     "instagramData": {"type": "POST", "showReelOnFeed": true, "isAiGenerated": false},
+    "tiktokData": {"title": "<titel, max. 90 Zeichen>", "privacyOption": "PUBLIC_TO_EVERYONE", "photoCoverIndex": 0,
+                   "disableComment": false, "disableDuet": false, "disableStitch": false, "autoAddMusic": false,
+                   "commercialContentThirdParty": false, "commercialContentOwnBrand": false, "isAigc": false},
     "firstCommentText": "", "shortener": false, "smartLinkData": {"ids": []}, "descendants": [], "hasNotReadNotes": false}
    ```
    `isAiGenerated` bleibt **false**: die Grafiken sind programmatisch gesetzte Typografie/Illustration, keine KI-Bilder.
-   Danach mit `getScheduledPosts` prüfen, dass der Post mit Status PENDING und allen Bildern drin ist.
+   **Regel (Gökce, 04.10.2026): Alles, was auf Instagram gepostet wird, geht zeitgleich auch auf TikTok** – also immer beide Provider im selben Post.
+   Danach mit `getScheduledPosts` prüfen, dass der Post für **instagram und tiktok** mit Status PENDING und allen Bildern drin ist.
+   Lehnt Metricool nur TikTok ab, trotzdem für Instagram einplanen und den TikTok-Fehler im Bericht nennen.
    **Hinweis:** Jeder neue Feed-Post verschiebt das 6-teilige Logo-Grid im Profil um eine Position – das ist so gewollt.
 7. **Plan aktualisieren**: Thema in `themen-feed.json` auf `"status": "gepostet"`, `"datum"`, `"plannerUrl"` setzen,
    committen und pushen (`main`). Vorher `git pull --rebase`, weil die Reel-Routine im selben Repo arbeitet.
