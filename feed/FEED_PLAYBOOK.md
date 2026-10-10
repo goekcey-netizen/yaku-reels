@@ -53,7 +53,7 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
 6. **Metricool `createScheduledPost`** (blogId `7155086`, date `<DATUM>T09:00:00+02:00` bzw. +01:00 im Winter):
    ```json
    {"autoPublish": true, "draft": false, "text": "<caption>", "media": ["<url1>", "..."],
-    "mediaAltText": ["YAKÜ Gutachten – <titel>"], "providers": [{"network": "instagram"}, {"network": "tiktok"}],
+    "mediaAltText": ["YAKÜ Gutachten – <titel> (1/n)", "..."], "providers": [{"network": "instagram"}, {"network": "tiktok"}],
     "publicationDate": {"dateTime": "<DATUM>T09:00:00", "timezone": "Europe/Berlin"},
     "instagramData": {"type": "POST", "showReelOnFeed": true, "isAiGenerated": false},
     "tiktokData": {"title": "<titel, max. 90 Zeichen>", "privacyOption": "PUBLIC_TO_EVERYONE", "photoCoverIndex": 0,
@@ -61,6 +61,7 @@ Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post fü
                    "commercialContentThirdParty": false, "commercialContentOwnBrand": false, "isAigc": false},
     "firstCommentText": "", "shortener": false, "smartLinkData": {"ids": []}, "descendants": [], "hasNotReadNotes": false}
    ```
+   `mediaAltText` muss genau so viele Einträge haben wie `media` (sonst 400 Bad Request).
    `isAiGenerated` bleibt **false**: die Grafiken sind programmatisch gesetzte Typografie/Illustration, keine KI-Bilder.
    **Regel (Gökce, 04.10.2026): Alles, was auf Instagram gepostet wird, geht zeitgleich auch auf TikTok** – also immer beide Provider im selben Post.
    Danach mit `getScheduledPosts` prüfen, dass der Post für **instagram und tiktok** mit Status PENDING und allen Bildern drin ist.
