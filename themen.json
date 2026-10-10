@@ -29,7 +29,9 @@
       "titel": "Darf ich meinen Gutachter selbst aussuchen?",
       "inhalt": "Freie Wahl des Sachverständigen bei unverschuldetem Unfall, Versicherer-Gutachter vs. unabhängiger Gutachter",
       "status": "offen",
-      "datum": null
+      "datum": null,
+      "projekt": "projekte/2026-10-10-freie-gutachterwahl",
+      "hinweis": "10.10.2026: Komposition, Sprechertext, Quellen und Sound fertig. NICHT eingeplant: ElevenLabs Free-Tier gesperrt (keine Stimme). Nächster Lauf: dieses Projekt weiterverwenden, nur Stimme erzeugen, mischen, Untertitel anpassen, neu rendern, einplanen."
     },
     {
       "nr": 4,

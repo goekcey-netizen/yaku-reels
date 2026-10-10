@@ -1,0 +1,14 @@
+{
+ "note": "start = geplanter Einsatz (s), maxlen = Zeitfenster (s), captions = Indizes der CAPS-Einträge in index.html, die zu diesem Satz gehören",
+ "takes": [
+  {"take": "VO01", "start": 1.2, "maxlen": 5.4, "text": "Die gegnerische Versicherung schlägt dir einen Gutachter vor. Musst du den nehmen?", "captions": [0, 1, 2]},
+  {"take": "VO02", "start": 7.4, "maxlen": 3.6, "text": "Kurz gesagt: Der Vorschlag ist nicht bindend.", "captions": [3, 4, 5]},
+  {"take": "VO03", "start": 11.8, "maxlen": 6.2, "text": "Ist der andere schuld, darfst du dir einen unabhängigen Sachverständigen grundsätzlich selbst aussuchen.", "captions": [6, 7, 8, 9]},
+  {"take": "VO04", "start": 18.9, "maxlen": 6.4, "text": "Die Kosten trägt dann in der Regel die Haftpflichtversicherung des Verursachers – bei Teilschuld anteilig.", "captions": [10, 11, 12, 13, 14]},
+  {"take": "VO05", "start": 26.1, "maxlen": 5.2, "text": "Warum das wichtig ist? Versicherer arbeiten oft mit bestimmten Gutachtern zusammen.", "captions": [15, 16, 17]},
+  {"take": "VO06", "start": 32.0, "maxlen": 6.3, "text": "Mit einem eigenen Gutachter musst du dich nicht allein auf die Einschätzung der Gegenseite verlassen.", "captions": [18, 19, 20, 21]},
+  {"take": "VO07", "start": 39.0, "maxlen": 6.2, "text": "Anders im Kaskofall: Da sprichst du das Gutachten vorher mit deiner Versicherung ab.", "captions": [22, 23, 24]},
+  {"take": "VO08", "start": 46.0, "maxlen": 5.8, "text": "Unverschuldet? Dann hast du die Wahl. Im Zweifel: fachlich beraten lassen.", "captions": [25, 26, 27]},
+  {"take": "VO09", "start": 55.4, "maxlen": 4.2, "text": "Jakü Gutachten. Ihr Schaden. Klar bewertet.", "captions": []}
+ ]
+}
