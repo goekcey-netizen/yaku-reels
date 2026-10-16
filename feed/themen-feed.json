@@ -160,8 +160,8 @@
       "id": "was-steht-im-gutachten",
       "titel": "Was steht in einem Unfallgutachten?",
       "typ": "karussell",
-      "status": "offen",
-      "datum": null,
+      "status": "gepostet",
+      "datum": "2026-10-16",
       "karussell": {
         "disclaimer": true,
         "cover": {
@@ -195,7 +195,8 @@
           "sub": "Wir erklären Ihnen jeden Wert in Ihrem Gutachten verständlich."
         }
       },
-      "caption": "Was steht eigentlich in einem Unfallgutachten?\n\n🔧 Reparaturkosten: Was die fachgerechte Reparatur kostet.\n🚗 Wiederbeschaffungswert: Was ein vergleichbares Fahrzeug vor dem Unfall gekostet hätte.\n📉 Wertminderung: Wie viel Ihr Fahrzeug trotz Reparatur an Wert verliert.\n\nDazu kommen Schadenhöhe und eine nachvollziehbare Dokumentation. Wir erklären jeden Wert verständlich.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #Unfallgutachten #Wiederbeschaffungswert #Wertminderung #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim"
+      "caption": "Was steht eigentlich in einem Unfallgutachten?\n\n🔧 Reparaturkosten: Was die fachgerechte Reparatur kostet.\n🚗 Wiederbeschaffungswert: Was ein vergleichbares Fahrzeug vor dem Unfall gekostet hätte.\n📉 Wertminderung: Wie viel Ihr Fahrzeug trotz Reparatur an Wert verliert.\n\nDazu kommen Schadenhöhe und eine nachvollziehbare Dokumentation. Wir erklären jeden Wert verständlich.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#KfzGutachter #Unfallgutachten #Wiederbeschaffungswert #Wertminderung #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim",
+      "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7155086&openWithPostUuid=-8214227170023879084"
     },
     {
       "nr": 6,
