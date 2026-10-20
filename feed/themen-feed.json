@@ -1,5 +1,5 @@
 {
-  "hinweis": "Redaktionsplan der Feed-Posts (alle 2 Tage, 09:00 Europe/Berlin, automatisch über Metricool). Die Routine nimmt das erste Thema mit status 'offen', setzt danach status 'gepostet' + datum + plannerUrl. Reihenfolge und Texte jederzeit änderbar. Nur Aussagen verwenden, die auf yaku-gutachten.de stehen oder allgemein fachlich belegt sind.",
+  "hinweis": "Redaktionsplan der Feed-Posts (Di + Do, 09:00 Europe/Berlin, automatisch über Metricool). Die Routine nimmt das erste Thema mit status 'offen', setzt danach status 'gepostet' + datum + plannerUrl. Reihenfolge und Texte jederzeit änderbar. Nur Aussagen verwenden, die auf yaku-gutachten.de stehen oder allgemein fachlich belegt sind.",
   "themen": [
     {
       "nr": 0,
@@ -225,8 +225,8 @@
       "id": "nach-dem-unfall-erste-schritte",
       "titel": "Nach dem Unfall: die ersten Schritte",
       "typ": "karussell",
-      "status": "gepostet",
-      "datum": "2026-10-20",
+      "status": "offen",
+      "datum": null,
       "karussell": {
         "disclaimer": true,
         "cover": {
@@ -261,7 +261,7 @@
         }
       },
       "caption": "Unfall gehabt? Diese Schritte sind jetzt wichtig:\n\n⚠️ Unfallstelle absichern: Warnblinker, Warnweste, Warndreieck. Bei Verletzten sofort 112 wählen.\n📸 Dokumentieren: Fotos von Unfallstelle und Schäden machen, Daten mit dem Unfallgegner austauschen, Zeugen notieren.\n📲 Schaden melden: Wir kümmern uns um die unabhängige Begutachtung.\n\nSpeichern Sie sich diesen Beitrag – für den Fall der Fälle.\n\n📍 München & Umgebung\n🌐 yaku-gutachten.de\n\nAllgemeine Information, keine Rechtsberatung.\n\n#Autounfall #Unfall #KfzGutachter #Unfallgutachten #KfzSachverständiger #KfzGutachterMünchen #München #Unterschleißheim",
-      "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7155086&openWithPostUuid=6860575522521825346"
+      "hinweis": "20.10.2026 eingeplant, aber von Metricool nicht veröffentlicht (Kontolimit erreicht) – erneut verwenden."
     },
     {
       "nr": 8,

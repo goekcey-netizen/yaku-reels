@@ -1,8 +1,9 @@
 # YAKÜ Feed-Posts – Playbook für die Routine
 
-Alle **2 Tage um 09:00 Uhr (Europe/Berlin)** erscheint auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) ein neuer Feed-Post
+Jeden **Dienstag und Donnerstag um 09:00 Uhr (Europe/Berlin)** erscheint auf Instagram (@yaku.gutachten) **und zeitgleich auf TikTok** (YAKÜ Gutachten) ein neuer Feed-Post
 im festen YAKÜ-Look – **automatisch veröffentlicht über Metricool** (autoPublish true).
-Die Routine läuft an geraden Kalendertagen früh morgens und plant den Post für **09:00 Uhr am selben Tag** ein.
+Die Routine läuft dienstags und donnerstags früh morgens und plant den Post für **09:00 Uhr am selben Tag** ein.
+**Regel (Gökce, 20.10.2026):** Insgesamt 3 Posts pro Woche ab November 2026 – Feed-Post Di + Do 09:00, Reel Sa 18:00. Im Oktober 2026 nichts mehr posten.
 
 ## 0. Eckdaten
 
